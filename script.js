@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Header background change on scroll
     const header = document.getElementById('header');
-    
+
     const updateHeader = () => {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const target = document.querySelector(targetId);
             if (target) {
                 const headerOffset = 80;
@@ -58,5 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const scroll = window.pageYOffset;
             heroBg.style.transform = `translateY(${scroll * 0.3}px)`;
         });
+    }
+    // Email De-obfuscation for Spam Protection
+    const emailTarget = document.getElementById('contact-email');
+    if (emailTarget) {
+        const user = 'hello';
+        const domain = 'canae.tokyo';
+        emailTarget.textContent = `${user}@${domain}`;
     }
 });

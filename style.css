@@ -98,12 +98,23 @@ img {
     align-items: center;
 }
 
-.logo-text {
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.email-wrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#contact-email {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    color: var(--primary-dark);
 }
 
 .nav ul {
