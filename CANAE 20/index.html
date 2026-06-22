@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社CANAE | ライフデザイン・テクノロジーカンパニー</title>
+    <meta name="description" content="株式会社CANAEは、AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニーです。パーソナルコーチング「ALIGENT」やD2Cブランド事業を展開しています。">
+    <link rel="canonical" href="https://canae.tokyo/">
+
+    <!-- OGP / SNS メタタグ -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="株式会社CANAE | ライフデザイン・テクノロジーカンパニー">
+    <meta property="og:description" content="AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー。">
+    <meta property="og:url" content="https://canae.tokyo/">
+    <meta property="og:site_name" content="株式会社CANAE">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:image" content="https://canae.tokyo/assets/logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="株式会社CANAE | ライフデザイン・テクノロジーカンパニー">
+    <meta name="twitter:description" content="AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー。">
+    <meta name="twitter:image" content="https://canae.tokyo/assets/logo.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg);
+            overflow: hidden;
+        }
+
+        .entrance-container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .entrance-logo {
+            max-width: 300px;
+            width: 80vw;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.3s;
+        }
+
+        .entrance-logo:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+
+        .enter-link {
+            display: block;
+            margin-top: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            letter-spacing: 5px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .entrance-logo:hover+.enter-link {
+            opacity: 1;
+            letter-spacing: 8px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- 構造化データ（Organization） -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "株式会社CANAE",
+      "url": "https://canae.tokyo/",
+      "logo": "https://canae.tokyo/assets/logo.png",
+      "description": "AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー。",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "西新宿3-5-12 2F",
+        "addressLocality": "新宿区",
+        "addressRegion": "東京都",
+        "postalCode": "160-0023",
+        "addressCountry": "JP"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@canae.tokyo",
+        "contactType": "customer support"
+      }
+    }
+    </script>
+</head>
+
+<body>
+    <div class="entrance-container">
+        <a href="company/" aria-label="株式会社CANAEのサイトに入る">
+            <img src="assets/logo.png" alt="株式会社CANAE ロゴ" class="entrance-logo">
+        </a>
+        <a href="company/" class="enter-link">Enter Site</a>
+    </div>
+</body>
+
+</html>
