@@ -547,6 +547,14 @@ td {
     border-top: 1px solid var(--border);
 }
 
+/* Company kana / furigana display */
+.company-kana {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
 /* Accessibility / SEO */
 .visually-hidden {
     position: absolute;
