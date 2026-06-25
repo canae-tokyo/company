@@ -612,7 +612,10 @@
       <!-- 8. 素材アップロード -->
       <div class="form-section">
         <div class="form-section-title"><span class="num">08</span>ロゴ・画像素材</div>
-        <div class="form-section-desc">お手元にあるロゴデータや使用したい写真があればアップロードしてください（任意）。</div>
+        <div class="form-section-desc">
+          お手元にあるロゴデータや使用したい写真があればアップロードしてください（任意）。<br>
+          <span style="color: var(--accent);">※1ファイル最大5MB、合計最大15MBまで添付可能です。容量超過が予想される場合は、Google Drive等の共有URLを「09 その他ご要望」欄へご記載ください。</span>
+        </div>
 
         <div class="field-row single">
           <div class="field">
@@ -706,9 +709,9 @@
   // 送信処理・サーバー連携
   // ----------------------------------------------------
   
-  // フォーム送信先エンドポイント (Getform.io等のURLを設定してください)
+  // フォーム送信先エンドポイント (Google Apps ScriptのウェブアプリURLを設定してください)
   // 設定されていない場合はローカルデモ動作（シミュレーション送信）になります
-  const FORM_ENDPOINT = "https://formsubmit.co/canae.tokyo@gmail.com";
+  const FORM_ENDPOINT = "";
 
   const orderForm = document.getElementById('order-form');
   const submitBtn = orderForm.querySelector('.submit-btn');
@@ -729,7 +732,7 @@
       errDiv.style.fontSize = '14px';
       orderForm.insertBefore(errDiv, orderForm.firstChild);
     }
-    errDiv.textContent = message;
+    errDiv.innerHTML = message.replace(/\n/g, '<br>');
     errDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -749,27 +752,54 @@
   honeypot.autocomplete = 'off';
   orderForm.appendChild(honeypot);
 
+  // ファイルをBase64に変換するヘルパー関数
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        // "data:image/png;base64,iVBOR..." から base64 のデータ部分のみ抽出
+        const base64Data = reader.result.split(',')[1];
+        resolve({
+          name: file.name,
+          type: file.type,
+          data: base64Data
+        });
+      };
+      reader.onerror = error => reject(error);
+    });
+  }
+
   orderForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     removeFormError();
 
-    // 1. スパム対策（ハニーポット）チェック
+    // 1. 連続送信制限 (5秒以内)
+    const LAST_SUBMIT_KEY = 'canae_form_last_submit';
+    const now = Date.now();
+    const lastSubmit = localStorage.getItem(LAST_SUBMIT_KEY);
+    if (lastSubmit && now - parseInt(lastSubmit) < 5000) {
+      showFormError("送信に失敗しました。\n\n5秒以内の連続送信は受け付けられません。時間を置いて再度お試しください。");
+      return;
+    }
+
+    // 2. スパム対策（ハニーポット）チェック
     if (honeypot.value) {
       console.warn("Spam detected via honeypot.");
       return;
     }
 
-    // 2. クライアント側バリデーションの追加確認 (ファイルチェック等)
-    // 添付ファイルサイズ制限チェック (1ファイル10MB、合計30MB)
-    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
-    const MAX_TOTAL_SIZE = 30 * 1024 * 1024; // 30MB
+    // 3. クライアント側バリデーションの追加確認 (ファイルチェック等)
+    // 添付ファイルサイズ制限チェック (1ファイル5MB、合計15MB)
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+    const MAX_TOTAL_SIZE = 15 * 1024 * 1024; // 15MB
     let totalSize = 0;
     const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf', 'ai', 'eps'];
 
     for (const file of selectedFiles) {
       totalSize += file.size;
       if (file.size > MAX_FILE_SIZE) {
-        showFormError(`ファイル「${file.name}」が制限（10MB以下）を超えています。`);
+        showFormError(`ファイル「${file.name}」が制限（5MB以下）を超えています。`);
         return;
       }
       const ext = file.name.split('.').pop().toLowerCase();
@@ -780,7 +810,7 @@
     }
 
     if (totalSize > MAX_TOTAL_SIZE) {
-      showFormError(`添付ファイルの合計サイズが上限（30MB）を超えています。現在の合計: ${(totalSize / (1024 * 1024)).toFixed(1)}MB`);
+      showFormError(`添付ファイルの合計サイズが上限（15MB）を超えています。現在の合計: ${(totalSize / (1024 * 1024)).toFixed(1)}MB`);
       return;
     }
 
@@ -791,59 +821,80 @@
       return;
     }
 
-    // 3. 送信処理の開始 (ローディング状態)
+    // 4. 送信処理の開始 (ローディング状態)
     submitBtn.disabled = true;
     submitBtn.style.opacity = '0.6';
     submitBtn.textContent = '送信中...';
 
-    // 4. FormDataの作成
-    const formData = new FormData(orderForm);
-    
-    // 通常のファイルinputのデフォルト値を削除（JavaScriptで制御しているselectedFilesを送るため）
-    formData.delete('attachments');
-
-    // 選択されたファイルを追加
-    selectedFiles.forEach((file) => {
-      formData.append('attachments', file);
-    });
-
-    // 5. 外部連携送信
     try {
-      if (!FORM_ENDPOINT) {
-        // エンドポイント未設定時はデモ動作（擬似送信完了）
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log("Demo send data:", Object.fromEntries(formData.entries()));
-      } else {
-        const response = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
+      // 5. 添付ファイルを Base64 配列に変換
+      const base64Attachments = await Promise.all(selectedFiles.map(file => fileToBase64(file)));
 
-        if (!response.ok) {
-          throw new Error('送信サーバーでエラーが発生しました。時間を置いてから再送信をお試しください。');
+      // 6. JSON 送信データの組み立て
+      const formData = new FormData(orderForm);
+      const payload = {};
+
+      // フォームデータの単純な値と配列値の仕分け
+      for (const [key, value] of formData.entries()) {
+        if (key === 'attachments' || key === 'mid_name_val') continue;
+        
+        // 複数選択 checkbox は配列に格納する
+        if (key === 'purpose' || key === 'pages' || key === 'mood' || key === 'features') {
+          if (!payload[key]) {
+            payload[key] = [];
+          }
+          payload[key].push(value);
+        } else {
+          payload[key] = value;
         }
       }
 
-      // 送信成功時の表示切り替え
-      const contactEmail = formData.get('contact_email');
+      // ハニーポットと添付ファイルをペイロードへ追加
+      payload.mid_name_val = honeypot.value;
+      payload.attachments = base64Attachments;
+
+      // 7. 外部連携送信
+      if (!FORM_ENDPOINT) {
+        // エンドポイント未設定時はデモ動作（擬似送信完了）
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        console.log("Demo send data:", payload);
+      } else {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          }
+        });
+
+        const resData = await response.json();
+        if (!response.ok || !resData.success) {
+          throw new Error(resData.error || '送信に失敗しました。');
+        }
+      }
+
+      // 最終送信完了時刻を記録して連続送信を防止
+      localStorage.setItem(LAST_SUBMIT_KEY, Date.now().toString());
+
+      // 送信成功時の表示切り替え (仕様書通りのテキスト)
       const container = orderForm.parentElement;
       container.innerHTML = `
         <div class="thank-you-message" style="text-align: center; padding: 40px 10px;">
           <div style="font-size: 54px; color: var(--accent); margin-bottom: 24px; font-family: sans-serif;">✓</div>
-          <h3 style="font-size: 22px; font-family: 'Noto Serif JP', serif; margin-bottom: 16px; color: var(--text);">お申込みを受け付けました</h3>
-          <p style="color: var(--text-dim); font-size: 14px; line-height: 1.8; max-width: 520px; margin: 0 auto 32px;">
-            ご入力いただいた内容を送信いたしました。<br>
-            担当者より2〜3営業日以内に、ご記入いただいたメールアドレス（<strong>${escapeHTML(contactEmail)}</strong>）宛にご連絡いたします。
+          <h3 style="font-size: 22px; font-family: 'Noto Serif JP', serif; margin-bottom: 16px; color: var(--text);">送信が完了しました。</h3>
+          <p style="color: var(--text-dim); font-size: 14.5px; line-height: 1.9; max-width: 520px; margin: 0 auto 32px; white-space: pre-line;">
+            内容を確認後、担当者よりご連絡いたします。
+            通常1〜3営業日以内にご返信いたします。
+
+            このたびはお申し込みいただきありがとうございました。
           </p>
           <a href="../company/" class="submit-btn" style="text-decoration: none; display: inline-block;">会社概要ページへ戻る</a>
         </div>
       `;
     } catch (error) {
       console.error(error);
-      showFormError(error.message || '接続に失敗しました。インターネット接続を確認してもう一度送信してください。');
+      // 送信失敗メッセージ (仕様書通り)
+      showFormError("送信に失敗しました。\n\n通信状況をご確認のうえ、\n再度お試しください。");
       // ボタンの状態を元に戻す
       submitBtn.disabled = false;
       submitBtn.style.opacity = '1';
