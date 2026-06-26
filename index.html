@@ -14,237 +14,98 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会社概要 | 株式会社CANAE（かなえ）代表 佐藤奏衣</title>
-    <meta name="description" content="株式会社CANAE（かなえ）の会社概要ページです。代表取締役・佐藤奏衣（サトウカナエ）が設立。AIと人間洞察を融合したライフデザイン・テクノロジーカンパニーとして、コーチング・D2C・デジタルマーケティング事業を東京・新宿で展開しています。">
-    <meta name="keywords" content="株式会社CANAE,CANAE,カナエ,かなえ,佐藤奏衣,佐藤 奏衣,さとうかなえ,さとう かなえ,サトウカナエ,サトウ カナエ,ライフデザイン,テクノロジーカンパニー,ALIGENT,パーソナルコーチング,D2C,新宿">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://canae.tokyo/company/">
+    <title>株式会社CANAE | ライフデザイン・テクノロジーカンパニー</title>
+    <meta name="description" content="株式会社CANAEは、AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニーです。パーソナルコーチング「ALIGENT」やD2Cブランド事業を展開しています。">
+    <meta http-equiv="refresh" content="0; url=https://canae.tokyo/company/">
+    <link rel="canonical" href="https://canae.tokyo/">
 
     <!-- OGP / SNS メタタグ -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="会社概要 | 株式会社CANAE（かなえ）">
-    <meta property="og:description" content="代表・佐藤奏衣（サトウカナエ）が設立したライフデザイン・テクノロジーカンパニー。コーチング・D2C・デジタルマーケティング事業を展開。">
-    <meta property="og:url" content="https://canae.tokyo/company/">
+    <meta property="og:title" content="株式会社CANAE | ライフデザイン・テクノロジーカンパニー">
+    <meta property="og:description" content="AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー。">
+    <meta property="og:url" content="https://canae.tokyo/">
     <meta property="og:site_name" content="株式会社CANAE">
+    <meta property="og:locale" content="ja_JP">
     <meta property="og:image" content="https://canae.tokyo/assets/logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="株式会社CANAE | ライフデザイン・テクノロジーカンパニー">
+    <meta name="twitter:description" content="AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー。">
+    <meta name="twitter:image" content="https://canae.tokyo/assets/logo.png">
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Noto+Sans+JP:wght@200;300;400;500&display=swap"
-        rel="stylesheet">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg);
+            overflow: hidden;
+        }
 
-<body>
-    <header id="header">
-        <div class="container header-inner">
-            <div class="logo">
-                <a href="/" aria-label="株式会社CANAE トップページへ">
-                    <img src="../assets/logo.png" alt="株式会社CANAE ロゴ" class="logo-img">
-                </a>
-            </div>
-            <nav class="nav" aria-label="メインナビゲーション">
-                <ul>
-                    <li><a href="#about">Philosophy</a></li>
-                    <li><a href="#services">Domains</a></li>
-                    <li><a href="#strategy">Strategy</a></li>
-                    <li><a href="#company">Company</a></li>
-                    <li><a href="#contact" class="btn-small">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        .entrance-container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
 
-    <main>
-        <section id="hero" aria-label="ヒーローセクション">
-            <div class="hero-bg" role="img" aria-label="CANAEのブランドイメージ背景"></div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content container">
-                <h1 class="fade-up">
-                    あなたの<span class="omoi">想い</span>を<br>
-                    <span class="highlight">かなえる</span><span class="kaisha">会社</span>
-                </h1>
-                <p class="fade-up" style="transition-delay: 0.2s;">株式会社CANAE</p>
-                <div class="scroll-down">Scroll</div>
-            </div>
-        </section>
+        .entrance-logo {
+            max-width: 300px;
+            width: 80vw;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.3s;
+        }
 
-        <section id="about" class="section" aria-labelledby="about-heading">
-            <div class="container">
-                <div class="about-flex">
-                    <div class="about-text">
-                        <div class="section-title fade-up">
-                            <span class="en">Human Value Design Company</span>
-                            <h2 id="about-heading">人生とライフスタイルの価値を最大化する</h2>
-                        </div>
-                        <div class="fade-up">
-                            <p class="concept">「AIと人間洞察で、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー」</p>
-                            <p>株式会社CANAE（カナエ）は、AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニーです。</p>
-                            <p>コーチングを中核に、D2Cブランドおよびデジタルコマース事業を展開し、人とプロダクトの価値創造を行います。</p>
-                            <p>また、動物福祉を重要な社会テーマと位置づけ、動物支援活動および関連事業にも取り組んでいます。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        .entrance-logo:hover {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
 
-        <section id="services" class="section bg-light" aria-labelledby="services-heading">
-            <div class="container">
-                <div class="section-title fade-up">
-                    <span class="en">Business Domains</span>
-                    <h2 id="services-heading">事業概況</h2>
-                </div>
-                <div class="services-grid">
-                    <article class="service-card fade-up">
-                        <div class="icon" aria-hidden="true">01</div>
-                        <h3>パーソナルコーチング事業<br>「ALIGENT」</h3>
-                        <p>個人の潜在能力を最大化し、人生・キャリア・自己実現を包括的に支援するパーソナルコーチングサービス「ALIGENT」を提供しています。今後は女性向けプログラムおよび法人向け人材開発・リーダーシップ研修プログラムへの展開を予定しています。
-                        </p>
-                    </article>
-                    <article class="service-card fade-up" style="transition-delay: 0.1s;">
-                        <div class="icon" aria-hidden="true">02</div>
-                        <h3>D2Cブランド・ライフスタイルEC事業</h3>
-                        <p>アクセサリーおよびライフスタイル雑貨等の自社ブランド商品の企画・販売を行い、SNSおよびデジタルマーケティングを活用したD2Cモデルを展開しています。データドリブンな商品選定により、効率的かつスケーラブルなコマースモデルを構築しています。
-                        </p>
-                    </article>
-                    <article class="service-card fade-up" style="transition-delay: 0.2s;">
-                        <div class="icon" aria-hidden="true">03</div>
-                        <h3>デジタルマーケティング・コンテンツ事業</h3>
-                        <p>SNS、動画、WEBメディアを活用したブランディング支援およびマーケティング戦略の企画・運用を行います。AI分析に基づく顧客データ活用により、最適な顧客体験の設計を行います。</p>
-                    </article>
-                    <article class="service-card fade-up" style="transition-delay: 0.3s;">
-                        <div class="icon" aria-hidden="true">04</div>
-                        <h3>アニマルウェルフェア・社会貢献事業</h3>
-                        <p>動物の保護・支援活動および動物福祉の向上を目的とした啓発活動を行うとともに、動物関連プロダクトの企画・販売を通じて持続可能な支援モデルの構築を目指します。</p>
-                    </article>
-                </div>
-            </div>
-        </section>
+        .enter-link {
+            display: block;
+            margin-top: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            letter-spacing: 5px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
 
-        <section id="strategy" class="section" aria-labelledby="strategy-heading">
-            <div class="container">
-                <div class="section-title fade-up">
-                    <span class="en">Strategy</span>
-                    <h2 id="strategy-heading">事業構造（コンセプト）</h2>
-                </div>
-                <div class="strategy-diagram fade-up">
-                    <div class="strategy-node">
-                        <span class="label">Core</span>
-                        <div class="content">Human Value Creation Platform（ALIGENT）</div>
-                    </div>
-                    <div class="strategy-arrow" aria-hidden="true">↓</div>
-                    <div class="strategy-node">
-                        <span class="label">Product Layer</span>
-                        <div class="content">D2Cブランド</div>
-                    </div>
-                    <div class="strategy-arrow" aria-hidden="true">↓</div>
-                    <div class="strategy-node">
-                        <span class="label">Revenue Engine</span>
-                        <div class="content">Data-driven Commerce</div>
-                    </div>
-                    <div class="strategy-arrow" aria-hidden="true">↓</div>
-                    <div class="strategy-node">
-                        <span class="label">Acquisition</span>
-                        <div class="content">SNS / Digital Media</div>
-                    </div>
-                    <div class="strategy-arrow" aria-hidden="true">↓</div>
-                    <div class="strategy-node">
-                        <span class="label">Social Impact</span>
-                        <div class="content">Animal Welfare &amp; Social Contribution</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        .entrance-logo:hover+.enter-link {
+            opacity: 1;
+            letter-spacing: 8px;
+        }
 
-        <section id="statement" class="section statement-section" aria-label="企業ビジョン">
-            <div class="container">
-                <div class="statement-content fade-up">
-                    <p>
-                        すべての人が自分の価値に気づき、<br>
-                        より豊かな人生を歩める社会へ。
-                    </p>
-                </div>
-            </div>
-        </section>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
 
-        <section id="company" class="section" aria-labelledby="company-heading">
-            <div class="container">
-                <div class="section-title fade-up">
-                    <span class="en">Company Profile</span>
-                    <h2 id="company-heading">会社概要</h2>
-                </div>
-                <div class="company-table fade-up">
-                    <table>
-                        <caption class="visually-hidden">株式会社CANAE 会社概要</caption>
-                        <tbody>
-                            <tr>
-                                <th scope="row">会社名</th>
-                                <td>株式会社CANAE</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">代表取締役</th>
-                                <td>佐藤 奏衣</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">所在地</th>
-                                <td><address style="font-style: normal;">〒160-0023 東京都新宿区西新宿3-5-12 2F</address></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">事業内容</th>
-                                <td>
-                                    ・パーソナルコーチング事業「ALIGENT」の運営<br>
-                                    ・D2Cブランド・ライフスタイルEC事業<br>
-                                    ・デジタルマーケティング・コンテンツ事業<br>
-                                    ・アニマルウェルフェア・社会貢献事業
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">資本金</th>
-                                <td>3,000,000円</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">法人番号</th>
-                                <td>8011101116263</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 
-        <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
-            <div class="container">
-                <div class="contact-box fade-up">
-                    <h2 id="contact-heading">Contact</h2>
-                    <p>ビジネスのご相談やサービスへのお問い合わせは、下記よりお気軽にご連絡ください。</p>
-                    <div class="contact-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-                        <a href="mailto:hello@canae.tokyo" class="btn">Message Us</a>
-                    </div>
-                    <div class="email-wrapper">
-                        <span id="contact-email"></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-copy">&copy; 2026 CANAE Inc.</div>
-        </div>
-    </footer>
-
+    <!-- 構造化データ（Organization） -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "株式会社CANAE",
-      "alternateName": ["CANAE Inc.", "かなえ", "カナエ", "CANAE"],
       "url": "https://canae.tokyo/",
       "logo": "https://canae.tokyo/assets/logo.png",
-      "description": "AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー",
-      "email": "hello@canae.tokyo",
+      "description": "AIと人間洞察を融合し、個人とブランドの価値を最大化するライフデザイン・テクノロジーカンパニー。",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "西新宿3-5-12 2F",
@@ -253,16 +114,22 @@
         "postalCode": "160-0023",
         "addressCountry": "JP"
       },
-      "founder": {
-        "@type": "Person",
-        "name": "佐藤奏衣",
-        "alternateName": ["サトウカナエ", "Kanae Sato"],
-        "jobTitle": "代表取締役CEO"
-      },
-      "sameAs": []
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@canae.tokyo",
+        "contactType": "customer support"
+      }
     }
     </script>
-    <script src="../script.js"></script>
+</head>
+
+<body>
+    <div class="entrance-container">
+        <a href="company/" aria-label="株式会社CANAEのサイトに入る">
+            <img src="assets/logo.png" alt="株式会社CANAE ロゴ" class="entrance-logo">
+        </a>
+        <a href="company/" class="enter-link">Enter Site</a>
+    </div>
 </body>
 
 </html>
