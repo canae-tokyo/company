@@ -16,13 +16,13 @@
     showPendingView_();
     waGetJson({ action: "getDiagnosisById", diagnosis_id: initialDiagnosisId }).then(function (res) {
       if (!res.found || !res.diagnosis) {
-        document.getElementById("pending-status").textContent = "診断結果が見つかりません。URLをご確認ください。";
+        fallbackLoadByDeal_(initialDealId || inferDealId_(initialDiagnosisId));
         return;
       }
       if (res.deal_id) sessionStorage.setItem("wa_deal_id", res.deal_id);
       showResultView_(res.diagnosis, res.deal_id || "");
     }).catch(function () {
-      document.getElementById("pending-status").textContent = "診断結果の読み込みに失敗しました。時間をおいて再度お試しください。";
+      fallbackLoadByDeal_(initialDealId || inferDealId_(initialDiagnosisId));
     });
   } else if (initialDealId) {
     showPendingView_();
@@ -113,6 +113,20 @@
       });
     };
     poll();
+  }
+
+  function fallbackLoadByDeal_(dealId) {
+    if (!dealId) {
+      document.getElementById("pending-status").textContent = "診断結果が見つかりません。URLをご確認ください。";
+      return;
+    }
+    sessionStorage.setItem("wa_deal_id", dealId);
+    startPolling_(dealId);
+  }
+
+  function inferDealId_(diagnosisId) {
+    var match = String(diagnosisId || "").match(/^DIAG-(\d+)$/);
+    return match ? "DEAL-" + match[1] : "";
   }
 
   function showResultView_(diagnosis, dealId) {
