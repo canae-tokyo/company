@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>佐藤奏衣 | CEO — 株式会社CANAE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink:       #0A0A0A;
+      --paper:     #F7F5F2;
+      --washi:     #C8B89A;
+      --mid:       #6B6B6B;
+      --rule:      #E2DED8;
+    }
+
+    html {
+      font-size: 16px;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Serif JP', sans-serif;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 24px;
+    }
+
+    /* ── Vertical accent line ── */
+    .accent-line {
+      position: fixed;
+      top: 0;
+      left: 20px;
+      width: 1px;
+      height: 100dvh;
+      background: linear-gradient(to bottom, transparent 0%, var(--washi) 30%, var(--washi) 70%, transparent 100%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* ── Main card ── */
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 72px 0 80px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header: company name vertical ── */
+    .company-label {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--mid);
+      writing-mode: horizontal-tb;
+      margin-bottom: 48px;
+      text-transform: uppercase;
+    }
+
+    /* ── Name block ── */
+    .name-block {
+      margin-bottom: 52px;
+    }
+
+    .name-en {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--mid);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .name-jp {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 400;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .title-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .title-rule {
+      width: 24px;
+      height: 1px;
+      background: var(--washi);
+      flex-shrink: 0;
+    }
+
+    .title-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--rule);
+      margin-bottom: 40px;
+    }
+
+    /* ── Contact items ── */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-item:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--washi);
+      margin-bottom: 6px;
+    }
+
+    .contact-value {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-value:hover {
+      color: var(--mid);
+    }
+
+    /* ── Links section ── */
+    .links-section {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--ink);
+      transition: opacity 0.2s ease;
+    }
+
+    .link-row:first-child {
+      border-top: 1px solid var(--rule);
+      margin-top: 0;
+    }
+
+    .link-row:hover {
+      opacity: 0.55;
+    }
+
+    .link-name {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+
+    .link-arrow {
+      font-size: 14px;
+      color: var(--washi);
+      font-weight: 300;
+      transition: transform 0.2s ease;
+    }
+
+    .link-row:hover .link-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ── vCard CTA ── */
+    .vcf-cta {
+      margin-top: 52px;
+    }
+
+    .vcf-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 18px 24px;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.25s ease, color 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .vcf-btn:hover {
+      background: var(--mid);
+    }
+
+    .vcf-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 64px;
+      padding-bottom: 40px;
+    }
+
+    .footer-company {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--mid);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink:   #F0EDE8;
+        --paper: #111110;
+        --rule:  #282826;
+        --mid:   #888580;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="accent-line" aria-hidden="true"></div>
+
+  <main class="card">
+
+    <p class="company-label">株式会社 CANAE</p>
+
+    <div class="name-block">
+      <p class="name-en">Kanae Sato</p>
+      <h1 class="name-jp">佐藤 奏衣</h1>
+      <div class="title-line">
+        <span class="title-rule"></span>
+        <span class="title-text">Chief Executive Officer</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <ul class="contact-list" aria-label="連絡先">
+      <li class="contact-item">
+        <span class="contact-label">Tel</span>
+        <a class="contact-value" href="tel:+810361611230">03-6161-1230</a>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">Email</span>
+        <a class="contact-value" href="mailto:hello@canae.tokyo">hello@canae.tokyo</a>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">Address</span>
+        <address class="contact-value" style="font-style:normal; line-height:1.7;">
+          〒160-0023<br>
+          東京都新宿区西新宿3-5-12-209
+        </address>
+      </li>
+    </ul>
+
+    <nav class="links-section" aria-label="リンク">
+      <a class="link-row" href="https://canae.tokyo/" target="_blank" rel="noopener">
+        <span class="link-name">会社サイト</span>
+        <span class="link-arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="link-row" href="https://canae.tokyo/company/" target="_blank" rel="noopener">
+        <span class="link-name">会社概要</span>
+        <span class="link-arrow" aria-hidden="true">→</span>
+      </a>
+    </nav>
+
+    <div class="vcf-cta">
+      <a class="vcf-btn" href="./contact.vcf" download="kanae-sato.vcf">
+        <svg class="vcf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 21H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/>
+          <polyline points="17 3 17 8 12 8"/>
+        </svg>
+        連絡先に追加 / Add to Contacts
+      </a>
+    </div>
+
+    <footer class="footer">
+      <p class="footer-company">© 2026 CANAE Inc.</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
