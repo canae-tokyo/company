@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>見積シミュレーター｜Web Assist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .estimate-layout { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; }
+  @media (max-width: 860px) { .estimate-layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../" class="brand">Web<span>Assist</span></a>
+  </div>
+</header>
+
+<section style="padding-top:56px;">
+  <div class="container">
+    <div class="eyebrow">見積シミュレーター</div>
+    <h1>プランとオプションを選んで、見積を確認しましょう</h1>
+    <p class="small">診断でおすすめされたオプションには「おすすめ」タグが付いています。金額はお選びいただいた内容で自動計算されます。</p>
+
+    <div class="estimate-layout mt-32">
+      <div>
+        <h2>プランを選ぶ</h2>
+        <div id="plan-list" class="grid grid-3"></div>
+
+        <h2 class="mt-32">オプションを選ぶ</h2>
+        <div id="module-list"></div>
+      </div>
+
+      <aside class="estimate-summary">
+        <h3>お見積り金額</h3>
+        <div class="estimate-total" id="total-price">¥0</div>
+        <div id="recommend-plan-note" class="notice-box" style="display:none;"></div>
+        <button class="btn btn-primary btn-block mt-32" id="recalculate-btn">この内容で見積る</button>
+        <a href="#" id="reserve-btn" class="btn btn-secondary btn-block mt-32" style="display:none;" target="_blank" rel="noopener">この内容で相談する（予約へ）</a>
+        <p class="small mt-32" id="estimate-error" style="color:#C1443A;"></p>
+        <p class="small mt-32">掲載価格は税込です。最終的な金額はご相談内容により変動する場合があります。成果（集客数・売上等）を保証するものではありません。</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../legal/terms/">利用規約</a>
+      <a href="../legal/tokushoho/">特定商取引法に基づく表記</a>
+      <a href="../legal/privacy/">プライバシーポリシー</a>
+      <a href="../legal/ai-policy/">AI利用ポリシー</a>
+      <a href="../legal/service-agreement/">制作・保守約款</a>
+    </div>
+        <p class="footer-note">「55,000円〜」はStarterプラン（1ページ・基本機能のみ）の価格です。成果（集客数・売上等）を保証するものではありません。本診断はAIによる簡易評価であり、専門家による詳細診断ではありません。</p>
+<p class="footer-note">© <span data-current-year></span> CANAE Inc.</p>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js?v=20260706a"></script>
+<script src="../assets/js/estimate.js?v=20260706a"></script>
+</body>
+</html>
