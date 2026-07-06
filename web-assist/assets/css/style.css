@@ -110,40 +110,68 @@ section { padding: 72px 0; }
 .hero-actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 .hero-note { margin-top: 16px; font-size: 13px; color: var(--ink-soft); }
 
-.radar-decor { width: 100%; max-width: 380px; margin: 0 auto; }
-.diagnosis-orbit {
-  position: relative; width: min(100%, 420px); margin: 0 auto; aspect-ratio: 1;
+.route-map {
+  position: relative; width: min(100%, 430px); margin: 0 auto; min-height: 430px;
   display: grid; place-items: center;
 }
-.hero-animated .radar-decor {
-  filter: drop-shadow(0 18px 28px rgba(14, 143, 122, 0.14));
-  animation: floatRadar 5.5s ease-in-out infinite;
+.route-panel {
+  width: min(100%, 360px); background: rgba(255,255,255,0.92); border: 1px solid var(--line);
+  border-radius: 18px; padding: 22px; box-shadow: 0 24px 60px rgba(20,35,31,0.12);
+  position: relative; overflow: hidden; animation: floatPanel 5.6s ease-in-out infinite;
 }
-.radar-score {
-  stroke-dasharray: 760;
-  stroke-dashoffset: 760;
-  animation: drawRadar 1.4s ease-out 0.15s forwards, pulseRadar 3.4s ease-in-out 1.6s infinite;
+.route-panel::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 0 28%, rgba(14,143,122,0.10) 34%, transparent 42% 100%);
+  transform: translateX(-120%); animation: panelScan 4.8s ease-in-out infinite;
 }
-.radar-sweep {
-  transform-origin: 150px 150px;
-  animation: sweepRadar 3.2s linear infinite;
+.route-panel-header {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); margin-bottom: 18px;
 }
-.radar-core { animation: pulseCore 1.8s ease-in-out infinite; }
-.orbit-chip {
-  position: absolute; display: inline-flex; align-items: center; justify-content: center;
-  min-width: 78px; height: 34px; padding: 0 14px; border-radius: 999px;
-  background: rgba(255,255,255,0.88); border: 1px solid var(--line); box-shadow: var(--shadow);
-  font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-deep);
+.route-panel-header strong { color: var(--accent-deep); font-size: 13px; }
+.route-stack { display: grid; gap: 12px; }
+.route-node {
+  position: relative; display: grid; gap: 2px; padding: 14px 44px 14px 16px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--bg-panel);
+  transform: translateX(18px); opacity: 0; animation: nodeEnter 0.7s ease forwards;
 }
-.chip-web { left: 4%; top: 28%; animation: floatChip 4.2s ease-in-out infinite; }
-.chip-google { right: 0; top: 18%; animation: floatChip 4.8s ease-in-out 0.4s infinite; }
-.chip-line { right: 12%; bottom: 14%; color: #0A8F3C; animation: floatChip 4.4s ease-in-out 0.8s infinite; }
-@keyframes drawRadar { to { stroke-dashoffset: 0; } }
-@keyframes sweepRadar { to { transform: rotate(360deg); } }
-@keyframes floatRadar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.route-node:nth-child(2) { animation-delay: 0.16s; }
+.route-node:nth-child(3) { animation-delay: 0.32s; }
+.node-kicker { font-family: var(--font-mono); font-size: 11px; color: var(--accent-deep); }
+.route-node strong { font-size: 14px; }
+.route-node i {
+  position: absolute; right: 16px; top: 50%; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); transform: translateY(-50%); box-shadow: 0 0 0 0 rgba(14,143,122,0.3);
+  animation: nodePulse 2.4s ease-in-out infinite;
+}
+.node-google i { background: var(--accent-warm); animation-delay: 0.3s; }
+.node-line i { background: var(--accent-line); animation-delay: 0.6s; }
+.route-output {
+  margin-top: 18px; border-radius: 12px; padding: 16px; background: #F2FAF7;
+  border: 1px solid rgba(14,143,122,0.24);
+}
+.route-output span, .route-summary span {
+  display: block; font-family: var(--font-mono); font-size: 11px; color: var(--accent-deep); margin-bottom: 4px;
+}
+.route-output strong { font-size: 20px; }
+.route-connector {
+  position: absolute; width: 2px; height: 74px; bottom: 78px; left: 50%;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  animation: connectorFlow 1.8s linear infinite;
+}
+.route-summary {
+  position: absolute; bottom: 0; right: 16px; width: 190px; padding: 16px 18px;
+  border-radius: 14px; background: var(--ink); color: #fff; box-shadow: var(--shadow);
+  animation: floatChip 4.4s ease-in-out infinite;
+}
+.route-summary strong { display: block; font-family: var(--font-mono); font-size: 26px; }
+.route-summary em { display: block; font-style: normal; font-size: 12px; color: #C9D6D0; margin-top: 4px; }
+@keyframes floatPanel { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes panelScan { 0%, 45% { transform: translateX(-120%); } 70%, 100% { transform: translateX(120%); } }
+@keyframes nodeEnter { to { opacity: 1; transform: translateX(0); } }
+@keyframes nodePulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(14,143,122,0.24); } 50% { box-shadow: 0 0 0 8px rgba(14,143,122,0); } }
+@keyframes connectorFlow { 0% { opacity: 0.25; transform: scaleY(0.5); } 50% { opacity: 1; transform: scaleY(1); } 100% { opacity: 0.25; transform: scaleY(0.5); } }
 @keyframes floatChip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes pulseRadar { 0%, 100% { fill-opacity: 0.18; } 50% { fill-opacity: 0.32; } }
-@keyframes pulseCore { 0%, 100% { r: 4; opacity: 1; } 50% { r: 7; opacity: 0.55; } }
 
 /* ---- Cards / Grids ---- */
 .grid { display: grid; gap: 24px; }
@@ -213,7 +241,7 @@ section { padding: 72px 0; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .spinner, .hero-animated .radar-decor, .radar-score, .radar-sweep, .radar-core, .orbit-chip { animation: none; }
+  .spinner, .route-panel, .route-panel::before, .route-node, .route-node i, .route-connector, .route-summary { animation: none; }
   html { scroll-behavior: auto; }
 }
 
