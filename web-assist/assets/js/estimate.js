@@ -3,23 +3,38 @@
  * Plan/Module選択 → calculateEstimate呼出 → 合計金額・おすすめプラン表示 → TimeRex予約導線
  */
 (function () {
-  var dealId = sessionStorage.getItem("wa_deal_id");
+  var urlParams = new URLSearchParams(window.location.search);
+  var dealId = urlParams.get("deal_id") || sessionStorage.getItem("wa_deal_id");
+  var diagnosisId = urlParams.get("diagnosis_id") || sessionStorage.getItem("wa_diagnosis_id");
   var recommendedIds = JSON.parse(sessionStorage.getItem("wa_recommended_modules") || "[]");
   var selectedPlanId = null;
   var moduleQuantities = {}; // module_id -> quantity（チェックされているものだけ保持）
   var allModules = [];
   var allPlans = [];
+  var isReady = false;
+
+  if (dealId) sessionStorage.setItem("wa_deal_id", dealId);
+  if (diagnosisId) sessionStorage.setItem("wa_diagnosis_id", diagnosisId);
+
+  var recommendedRequest = diagnosisId
+    ? waGetJson({ action: "getRecommendedModules", diagnosis_id: diagnosisId }).catch(function () { return { module_ids: recommendedIds }; })
+    : Promise.resolve({ module_ids: recommendedIds });
 
   Promise.all([
     waGetJson({ action: "getPlans" }),
     waGetJson({ action: "getModules" }),
-    waGetJson({ action: "getPublicSettings" })
+    waGetJson({ action: "getPublicSettings" }),
+    recommendedRequest
   ]).then(function (results) {
     allPlans = results[0].filter(function (p) { return p.category === "ONE_TIME"; });
     allModules = results[1];
+    recommendedIds = results[3].module_ids || [];
+    sessionStorage.setItem("wa_recommended_modules", JSON.stringify(recommendedIds));
     renderPlans_();
     renderModules_();
     setupReserveLink_(results[2].timerex_url);
+    isReady = true;
+    recalculateEstimate_();
   }).catch(function (err) {
     var errorEl = document.getElementById("estimate-error");
     errorEl.textContent = err.message || "見積データを読み込めませんでした。";
@@ -47,6 +62,7 @@
           b.textContent = active ? "選択中" : "このプランを選ぶ";
           b.className = "btn btn-block plan-select-btn " + (active ? "btn-primary" : "btn-secondary");
         });
+        recalculateEstimate_();
       });
     });
   }
@@ -85,12 +101,18 @@
       cb.addEventListener("change", function () {
         if (cb.checked) moduleQuantities[cb.dataset.moduleId] = 1;
         else delete moduleQuantities[cb.dataset.moduleId];
+        recalculateEstimate_();
       });
       if (cb.checked) moduleQuantities[cb.dataset.moduleId] = 1;
     });
   }
 
   document.getElementById("recalculate-btn").addEventListener("click", function () {
+    recalculateEstimate_();
+  });
+
+  function recalculateEstimate_() {
+    if (!isReady) return;
     var errorEl = document.getElementById("estimate-error");
     errorEl.textContent = "";
     if (!dealId) {
@@ -119,7 +141,7 @@
         }
       })
       .catch(function () { errorEl.textContent = "通信エラーが発生しました。"; });
-  });
+  }
 
   function setupReserveLink_(timerexUrl) {
     var link = document.getElementById("reserve-btn");

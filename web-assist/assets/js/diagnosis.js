@@ -8,6 +8,32 @@
   var form = document.getElementById("diagnosis-form");
   var errorEl = document.getElementById("form-error");
   var submitBtn = document.getElementById("submit-btn");
+  var urlParams = new URLSearchParams(window.location.search);
+  var initialDiagnosisId = urlParams.get("diagnosis_id");
+  var initialDealId = urlParams.get("deal_id") || sessionStorage.getItem("wa_deal_id");
+
+  if (initialDiagnosisId) {
+    showPendingView_();
+    waGetJson({ action: "getDiagnosisById", diagnosis_id: initialDiagnosisId }).then(function (res) {
+      if (!res.found || !res.diagnosis) {
+        document.getElementById("pending-status").textContent = "診断結果が見つかりません。URLをご確認ください。";
+        return;
+      }
+      if (res.deal_id) sessionStorage.setItem("wa_deal_id", res.deal_id);
+      showResultView_(res.diagnosis, res.deal_id || "");
+    }).catch(function () {
+      document.getElementById("pending-status").textContent = "診断結果の読み込みに失敗しました。時間をおいて再度お試しください。";
+    });
+  } else if (initialDealId) {
+    showPendingView_();
+    startPolling_(initialDealId);
+  }
+
+  submitBtn.addEventListener("click", function () {
+    if (!submitBtn.disabled) {
+      submitBtn.textContent = "送信中…";
+    }
+  });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -25,10 +51,12 @@
     };
 
     if (!payload.consent_terms || !payload.consent_email || !payload.consent_diagnosis_disclaimer) {
+      submitBtn.textContent = "無料でAI診断する";
       showError_("利用規約・メール配信・AI簡易診断への同意は、すべて必須です。");
       return;
     }
     if (!payload.target_url || !payload.name || !payload.email) {
+      submitBtn.textContent = "無料でAI診断する";
       showError_("URL・お名前・メールアドレスは必須です。");
       return;
     }
@@ -72,7 +100,7 @@
           return;
         }
         if (res.diagnosis_status === "COMPLETED") {
-          showResultView_(res.diagnosis);
+          showResultView_(res.diagnosis, dealId);
         } else if (res.diagnosis_status === "FAILED") {
           document.getElementById("pending-view").style.display = "none";
           document.getElementById("failed-view").style.display = "block";
@@ -87,9 +115,13 @@
     poll();
   }
 
-  function showResultView_(diagnosis) {
+  function showResultView_(diagnosis, dealId) {
     document.getElementById("pending-view").style.display = "none";
+    document.getElementById("form-view").style.display = "none";
     document.getElementById("result-view").style.display = "block";
+    var estimateUrl = "../estimate/?diagnosis_id=" + encodeURIComponent(diagnosis.diagnosis_id);
+    if (dealId) estimateUrl += "&deal_id=" + encodeURIComponent(dealId);
+    document.getElementById("to-estimate-btn").href = estimateUrl;
 
     // 10項目診断（すべて実データに対応。旧「更新性」は未実装のため「アクセス解析」に置き換えて10軸を実データで統一）
     var labels = ["表示速度", "SEO", "スマホ対応", "SSL", "CTA", "UI/UX", "コンテンツ量", "LINE導線", "Google導線", "アクセス解析"];
@@ -129,6 +161,7 @@
       .then(function (res) {
         sessionStorage.setItem("wa_recommended_modules", JSON.stringify(res.module_ids || []));
         sessionStorage.setItem("wa_diagnosis_id", diagnosis.diagnosis_id);
+        if (dealId) sessionStorage.setItem("wa_deal_id", dealId);
         renderRecommendations_(res.module_ids || []);
       });
   }
