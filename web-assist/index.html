@@ -7,7 +7,7 @@
 <meta name="description" content="無料AI診断で、あなたのお店・会社のWeb・Google・LINEの集客導線を10項目チェック。株式会社CANAEが提供するWeb Assistは、ホームページ制作ではなく導線改善支援サービスです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/style.css?v=20260707b">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero hero-animated">
   <div class="container hero-grid">
     <div class="hero-copy">
       <div class="eyebrow">Web × Google × LINE 集客導線診断</div>
@@ -33,16 +33,22 @@
       <p class="hero-note">※本診断はAIによる簡易評価です。専門家による詳細診断ではありません。</p>
     </div>
     <div class="hero-visual" aria-hidden="true">
-      <svg class="radar-decor" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#DCE2D9" fill="none">
-          <polygon points="150,20 220,55 270,120 270,180 220,245 150,280 80,245 30,180 30,120 80,55" />
-          <polygon points="150,60 195,80 225,120 225,175 195,215 150,235 105,215 75,175 75,120 105,80" opacity="0.7"/>
-          <polygon points="150,100 170,110 185,125 185,170 170,190 150,200 130,190 115,170 115,125 130,110" opacity="0.5"/>
+      <div class="diagnosis-orbit">
+        <svg class="radar-decor" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <g class="radar-grid" stroke="#DCE2D9" fill="none">
+          <polygon class="radar-ring ring-1" points="150,20 220,55 270,120 270,180 220,245 150,280 80,245 30,180 30,120 80,55" />
+          <polygon class="radar-ring ring-2" points="150,60 195,80 225,120 225,175 195,215 150,235 105,215 75,175 75,120 105,80" opacity="0.7"/>
+          <polygon class="radar-ring ring-3" points="150,100 170,110 185,125 185,170 170,190 150,200 130,190 115,170 115,125 130,110" opacity="0.5"/>
         </g>
-        <polygon points="150,45 205,70 245,125 250,175 210,225 150,255 95,220 55,175 60,120 100,65"
+        <polygon class="radar-score" points="150,45 205,70 245,125 250,175 210,225 150,255 95,220 55,175 60,120 100,65"
           fill="rgba(14,143,122,0.18)" stroke="#0E8F7A" stroke-width="2"/>
-        <circle cx="150" cy="150" r="3" fill="#0E8F7A"/>
-      </svg>
+        <line class="radar-sweep" x1="150" y1="150" x2="150" y2="22" stroke="#E8963D" stroke-width="2" stroke-linecap="round"/>
+        <circle class="radar-core" cx="150" cy="150" r="4" fill="#0E8F7A"/>
+        </svg>
+        <span class="orbit-chip chip-web">WEB</span>
+        <span class="orbit-chip chip-google">Google</span>
+        <span class="orbit-chip chip-line">LINE</span>
+      </div>
     </div>
   </div>
 </section>

@@ -111,6 +111,39 @@ section { padding: 72px 0; }
 .hero-note { margin-top: 16px; font-size: 13px; color: var(--ink-soft); }
 
 .radar-decor { width: 100%; max-width: 380px; margin: 0 auto; }
+.diagnosis-orbit {
+  position: relative; width: min(100%, 420px); margin: 0 auto; aspect-ratio: 1;
+  display: grid; place-items: center;
+}
+.hero-animated .radar-decor {
+  filter: drop-shadow(0 18px 28px rgba(14, 143, 122, 0.14));
+  animation: floatRadar 5.5s ease-in-out infinite;
+}
+.radar-score {
+  stroke-dasharray: 760;
+  stroke-dashoffset: 760;
+  animation: drawRadar 1.4s ease-out 0.15s forwards, pulseRadar 3.4s ease-in-out 1.6s infinite;
+}
+.radar-sweep {
+  transform-origin: 150px 150px;
+  animation: sweepRadar 3.2s linear infinite;
+}
+.radar-core { animation: pulseCore 1.8s ease-in-out infinite; }
+.orbit-chip {
+  position: absolute; display: inline-flex; align-items: center; justify-content: center;
+  min-width: 78px; height: 34px; padding: 0 14px; border-radius: 999px;
+  background: rgba(255,255,255,0.88); border: 1px solid var(--line); box-shadow: var(--shadow);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--accent-deep);
+}
+.chip-web { left: 4%; top: 28%; animation: floatChip 4.2s ease-in-out infinite; }
+.chip-google { right: 0; top: 18%; animation: floatChip 4.8s ease-in-out 0.4s infinite; }
+.chip-line { right: 12%; bottom: 14%; color: #0A8F3C; animation: floatChip 4.4s ease-in-out 0.8s infinite; }
+@keyframes drawRadar { to { stroke-dashoffset: 0; } }
+@keyframes sweepRadar { to { transform: rotate(360deg); } }
+@keyframes floatRadar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes floatChip { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulseRadar { 0%, 100% { fill-opacity: 0.18; } 50% { fill-opacity: 0.32; } }
+@keyframes pulseCore { 0%, 100% { r: 4; opacity: 1; } 50% { r: 7; opacity: 0.55; } }
 
 /* ---- Cards / Grids ---- */
 .grid { display: grid; gap: 24px; }
@@ -180,7 +213,7 @@ section { padding: 72px 0; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .spinner { animation: none; }
+  .spinner, .hero-animated .radar-decor, .radar-score, .radar-sweep, .radar-core, .orbit-chip { animation: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -202,6 +235,11 @@ section { padding: 72px 0; }
   border-radius: var(--radius); padding: 24px;
 }
 .estimate-total { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--accent-deep); }
+.mt-16 { margin-top: 16px; }
+.estimate-status {
+  min-height: 1.7em; color: var(--accent-deep);
+}
+.estimate-status.is-error { color: var(--danger); }
 
 /* ---- Legal pages ---- */
 .legal-body h2 { margin-top: 2em; font-size: 20px; }

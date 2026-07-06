@@ -15,6 +15,14 @@
   var moduleById = {};
   var isReady = false;
   var latestEstimate = null;
+  var catalogLoaded = false;
+
+  var DEFAULT_PLANS = [
+    { plan_id: "PLAN-STARTER", name: "Starter", category: "ONE_TIME", price: 55000 },
+    { plan_id: "PLAN-BIZ-LIGHT", name: "Business Light", category: "ONE_TIME", price: 148000 },
+    { plan_id: "PLAN-BIZ-STD", name: "Business Standard", category: "ONE_TIME", price: 248000 },
+    { plan_id: "PLAN-BIZ-PREM", name: "Business Premium", category: "ONE_TIME", price: 398000 }
+  ];
 
   var PLAN_COPY = {
     "PLAN-STARTER": {
@@ -38,6 +46,13 @@
   if (dealId) sessionStorage.setItem("wa_deal_id", dealId);
   if (diagnosisId) sessionStorage.setItem("wa_diagnosis_id", diagnosisId);
 
+  allPlans = DEFAULT_PLANS.slice();
+  renderPlans_();
+  document.getElementById("module-list").innerHTML = "<div class=\"notice-box\">オプションを読み込んでいます。</div>";
+  isReady = true;
+  recalculateEstimate_();
+  setupReserveLink_("");
+
   var recommendedRequest = diagnosisId
     ? waGetJson({ action: "getRecommendedModules", diagnosis_id: diagnosisId }).catch(function () { return { module_ids: recommendedIds }; })
     : Promise.resolve({ module_ids: recommendedIds });
@@ -45,27 +60,28 @@
   Promise.all([
     waGetJson({ action: "getPlans" }),
     waGetJson({ action: "getModules" }),
-    waGetJson({ action: "getPublicSettings" }),
     recommendedRequest,
     waGetJson({ action: "getPlanModules" })
   ]).then(function (results) {
     allPlans = results[0].filter(function (p) { return p.category === "ONE_TIME"; });
     allModules = results[1];
     allModules.forEach(function (m) { moduleById[m.module_id] = m; });
-    recommendedIds = results[3].module_ids || [];
-    allPlanModules = results[4] || [];
+    recommendedIds = results[2].module_ids || [];
+    allPlanModules = results[3] || [];
+    catalogLoaded = true;
     sessionStorage.setItem("wa_recommended_modules", JSON.stringify(recommendedIds));
     renderPlans_();
     renderModules_();
-    setupReserveLink_(results[2].timerex_url);
-    isReady = true;
     recalculateEstimate_();
   }).catch(function (err) {
     var errorEl = document.getElementById("estimate-error");
     errorEl.textContent = err.message || "見積データを読み込めませんでした。";
-    document.getElementById("plan-list").innerHTML = "<div class=\"notice-box\">見積データの読み込みにはGAS Web App URLの設定が必要です。</div>";
-    document.getElementById("module-list").innerHTML = "";
+    document.getElementById("module-list").innerHTML = "<div class=\"notice-box\">オプションを読み込めませんでした。プラン選択はこのまま確認できます。</div>";
   });
+
+  waGetJson({ action: "getPublicSettings" })
+    .then(function (settings) { setupReserveLink_(settings.timerex_url); })
+    .catch(function () { setupReserveLink_(""); });
 
   function renderPlans_() {
     var el = document.getElementById("plan-list");
@@ -149,6 +165,7 @@
     document.getElementById("total-price").textContent = waFormatYen(latestEstimate.total_price);
     document.getElementById("reserve-btn").style.display = "block";
     renderRecommendPlanNote_(latestEstimate.recommended_plan);
+    setEstimateStatus_(catalogLoaded ? "選択内容を反映済みです。" : "プラン金額を先に反映しています。オプションは読み込み後に反映されます。", false);
   }
 
   function calculateLocalEstimate_() {
@@ -208,10 +225,12 @@
     errorEl.textContent = "";
     if (!dealId) {
       errorEl.textContent = "診断情報が見つかりません。無料診断からやり直してください。";
+      setEstimateStatus_("診断情報がないため保存できません。診断結果ページから見積へ進んでください。", true);
       return;
     }
     btn.disabled = true;
     btn.textContent = "保存中…";
+    setEstimateStatus_("見積内容を保存しています。数秒かかる場合があります。", false);
     var selectedModules = Object.keys(moduleQuantities).map(function (id) {
       return { module_id: id, quantity: moduleQuantities[id] };
     });
@@ -220,13 +239,18 @@
       .then(function (res) {
         if (!res.success) {
           errorEl.textContent = res.message || "見積の保存に失敗しました。";
+          setEstimateStatus_("見積の保存に失敗しました。時間をおいて再度お試しください。", true);
           return;
         }
         document.getElementById("total-price").textContent = waFormatYen(res.estimate.total_price);
         renderRecommendPlanNote_(res.estimate.recommended_plan);
         document.getElementById("reserve-btn").style.display = "block";
+        setEstimateStatus_("見積を保存しました。下の予約ボタンから相談へ進めます。", false);
       })
-      .catch(function () { errorEl.textContent = "通信エラーが発生しました。"; })
+      .catch(function () {
+        errorEl.textContent = "通信エラーが発生しました。";
+        setEstimateStatus_("通信エラーで保存できませんでした。表示中の金額は確認できます。", true);
+      })
       .then(function () {
         btn.disabled = false;
         btn.textContent = "この内容で見積る";
@@ -243,5 +267,12 @@
   function setupReserveLink_(timerexUrl) {
     var link = document.getElementById("reserve-btn");
     link.href = timerexUrl || "../thanks/"; // TimeRex URL未設定時はサンクスページへ暫定リンク
+  }
+
+  function setEstimateStatus_(message, isError) {
+    var el = document.getElementById("estimate-status");
+    if (!el) return;
+    el.textContent = message || "";
+    el.className = "small mt-16 estimate-status" + (isError ? " is-error" : "");
   }
 })();
