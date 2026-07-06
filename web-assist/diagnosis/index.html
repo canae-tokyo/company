@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料AI診断｜Web Assist</title>
+<meta name="description" content="URLを入力するだけで、Web・Google・LINEの集客導線を10項目AIで無料診断します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../" class="brand">Web<span>Assist</span></a>
+  </div>
+</header>
+
+<section style="padding-top:56px;">
+  <div class="container" style="max-width:640px;">
+
+    <div id="form-view">
+      <div class="eyebrow">無料AI診断</div>
+      <h1>無料AI診断。結果は数分以内にメールとこの画面でお届けします。</h1>
+      <p class="small">診断は非同期で処理されるため、送信後すぐには結果が表示されません。ページを閉じていただいても、結果はメールでお届けします。</p>
+
+      <form id="diagnosis-form" class="card mt-32" novalidate>
+        <div class="form-field">
+          <label for="target_url">診断したいサイトのURL <span aria-hidden="true">*</span></label>
+          <input type="url" id="target_url" name="target_url" placeholder="https://example.com" required>
+        </div>
+        <div class="form-field">
+          <label for="name">お名前 <span aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="email">メールアドレス <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-field">
+          <label for="phone">電話番号（任意）</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div class="checkbox-field">
+          <input type="checkbox" id="consent_terms" required>
+          <label for="consent_terms"><a href="../legal/terms/" target="_blank">利用規約</a>・<a href="../legal/privacy/" target="_blank">プライバシーポリシー</a>に同意します</label>
+        </div>
+        <div class="checkbox-field">
+          <input type="checkbox" id="consent_email" required>
+          <label for="consent_email">診断結果・改善案内等のメール配信に同意します（配信停止はいつでも可能です）</label>
+        </div>
+        <div class="checkbox-field">
+          <input type="checkbox" id="consent_diagnosis_disclaimer" required>
+          <label for="consent_diagnosis_disclaimer">本診断はAIによる簡易評価であり、専門家による詳細診断ではなく、成果を保証するものではないことを理解しました</label>
+        </div>
+
+        <p class="form-error" id="form-error"></p>
+        <button type="submit" class="btn btn-primary btn-block mt-32" id="submit-btn">無料でAI診断する</button>
+      </form>
+    </div>
+
+    <div id="pending-view" class="status-panel" style="display:none;">
+      <div class="spinner" aria-hidden="true"></div>
+      <h2>診断を受け付けました</h2>
+      <p>結果は数分以内に、このページとメールでお届けします。<br>このページを開いたままお待ちいただくか、後でメールをご確認ください。</p>
+      <p class="small" id="pending-status">状況を確認中…</p>
+    </div>
+
+    <div id="result-view" style="display:none;">
+      <div class="eyebrow">診断結果</div>
+      <h2>あなたのサイトの診断結果です</h2>
+      <div class="card">
+        <canvas id="radar-chart" width="400" height="400" role="img" aria-label="診断結果レーダーチャート"></canvas>
+      </div>
+      <div id="recommend-list" class="card mt-32"></div>
+      <div class="text-center mt-32">
+        <a href="../estimate/" id="to-estimate-btn" class="btn btn-primary">この結果で見積を見る</a>
+      </div>
+    </div>
+
+    <div id="failed-view" class="status-panel" style="display:none;">
+      <h2>診断に失敗しました</h2>
+      <p>お手数ですが、URLをご確認の上、再度お試しいただくか、お問い合わせください。</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="../legal/terms/">利用規約</a>
+      <a href="../legal/tokushoho/">特定商取引法に基づく表記</a>
+      <a href="../legal/privacy/">プライバシーポリシー</a>
+      <a href="../legal/ai-policy/">AI利用ポリシー</a>
+      <a href="../legal/service-agreement/">制作・保守約款</a>
+    </div>
+        <p class="footer-note">「55,000円〜」はStarterプラン（1ページ・基本機能のみ）の価格です。成果（集客数・売上等）を保証するものではありません。本診断はAIによる簡易評価であり、専門家による詳細診断ではありません。</p>
+<p class="footer-note">© <span data-current-year></span> CANAE Inc.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="../assets/js/main.js?v=20260706a"></script>
+<script src="../assets/js/diagnosis.js?v=20260706b"></script>
+</body>
+</html>
