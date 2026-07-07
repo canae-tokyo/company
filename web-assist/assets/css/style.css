@@ -73,6 +73,8 @@ img { max-width: 100%; display: block; }
   color: var(--ink); letter-spacing: 0.02em;
 }
 .brand span { color: var(--accent); }
+.site-footer .brand { color: #F6F7F2; }
+.site-footer .brand span { color: #7DE0CF; }
 .header-cta {
   display: inline-flex; align-items: center; gap: 8px;
 }
