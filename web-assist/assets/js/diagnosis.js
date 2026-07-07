@@ -5,6 +5,7 @@
  */
 (function () {
   var POLL_INTERVAL_MS = 10000;
+  var MAX_POLL_ATTEMPTS = 36;
   var form = document.getElementById("diagnosis-form");
   var errorEl = document.getElementById("form-error");
   var submitBtn = document.getElementById("submit-btn");
@@ -89,14 +90,18 @@
   function showPendingView_() {
     document.getElementById("form-view").style.display = "none";
     document.getElementById("pending-view").style.display = "block";
+    setPendingSpinnerVisible_(true);
   }
 
   function startPolling_(dealId) {
     var statusEl = document.getElementById("pending-status");
+    var attempts = 0;
     var poll = function () {
+      attempts += 1;
       waGetJson({ action: "getDiagnosisStatus", deal_id: dealId }).then(function (res) {
         if (!res.found) {
           statusEl.textContent = "診断情報が見つかりません。時間をおいて再度お試しください。";
+          setPendingSpinnerVisible_(false);
           return;
         }
         if (res.diagnosis_status === "COMPLETED") {
@@ -106,13 +111,28 @@
           document.getElementById("failed-view").style.display = "block";
         } else {
           statusEl.textContent = "診断処理中です…（" + res.diagnosis_status + "）";
+          if (attempts >= MAX_POLL_ATTEMPTS) {
+            statusEl.textContent = "診断処理に時間がかかっています。ページを再読み込みするか、後ほどメールをご確認ください。";
+            setPendingSpinnerVisible_(false);
+            return;
+          }
           setTimeout(poll, POLL_INTERVAL_MS);
         }
       }).catch(function () {
+        if (attempts >= MAX_POLL_ATTEMPTS) {
+          statusEl.textContent = "診断状況を確認できませんでした。通信状況をご確認のうえ、ページを再読み込みしてください。";
+          setPendingSpinnerVisible_(false);
+          return;
+        }
         setTimeout(poll, POLL_INTERVAL_MS);
       });
     };
     poll();
+  }
+
+  function setPendingSpinnerVisible_(visible) {
+    var spinner = document.querySelector("#pending-view .spinner");
+    if (spinner) spinner.style.display = visible ? "" : "none";
   }
 
   function fallbackLoadByDeal_(dealId) {
