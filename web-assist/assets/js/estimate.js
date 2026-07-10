@@ -228,12 +228,17 @@
       setEstimateStatus_("診断情報がないため保存できません。診断結果ページから見積へ進んでください。", true);
       return;
     }
-    btn.disabled = true;
-    btn.textContent = "保存中…";
-    setEstimateStatus_("見積内容を保存しています。数秒かかる場合があります。", false);
     var selectedModules = Object.keys(moduleQuantities).map(function (id) {
       return { module_id: id, quantity: moduleQuantities[id] };
     });
+    if (!selectedPlanId && selectedModules.length === 0) {
+      errorEl.textContent = "プランまたはオプションを1つ以上選択してください。";
+      setEstimateStatus_("見積を確定するには、プランまたはオプションを選択してください。", true);
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "保存中…";
+    setEstimateStatus_("見積内容を保存しています。数秒かかる場合があります。", false);
 
     waPostJson({ action: "calculateEstimate", deal_id: dealId, plan_id: selectedPlanId, selected_modules: selectedModules })
       .then(function (res) {
@@ -253,7 +258,7 @@
       })
       .then(function () {
         btn.disabled = false;
-        btn.textContent = "この内容で見積る";
+        btn.textContent = "この内容で見積を確定する";
       });
   }
 
