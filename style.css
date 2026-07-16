@@ -788,12 +788,50 @@ td {
         padding: 60px 0;
     }
 
-    .nav {
-        display: none;
+    #header {
+        height: auto;
+        min-height: 86px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(12px);
     }
 
-    #header {
-        height: 70px;
+    .header-inner {
+        align-items: flex-start;
+        gap: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .logo-img {
+        height: 44px;
+    }
+
+    .nav {
+        display: block;
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        padding: 4px 0 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav ul {
+        gap: 14px;
+        width: max-content;
+        min-width: 100%;
+        justify-content: flex-start;
+    }
+
+    .nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        white-space: nowrap;
+        font-size: 0.78rem;
+    }
+
+    .btn-small {
+        padding: 6px 16px !important;
     }
 
     h1 {
