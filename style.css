@@ -796,6 +796,7 @@ td {
     }
 
     .header-inner {
+        flex-direction: column;
         align-items: flex-start;
         gap: 12px;
         padding-top: 10px;
@@ -808,15 +809,15 @@ td {
 
     .nav {
         display: block;
-        flex: 1;
-        min-width: 0;
+        width: 100%;
+        max-width: 100%;
         overflow-x: auto;
         padding: 4px 0 8px;
         -webkit-overflow-scrolling: touch;
     }
 
     .nav ul {
-        gap: 14px;
+        gap: 12px;
         width: max-content;
         min-width: 100%;
         justify-content: flex-start;
@@ -826,6 +827,7 @@ td {
         display: inline-flex;
         align-items: center;
         min-height: 32px;
+        padding: 0 2px;
         white-space: nowrap;
         font-size: 0.78rem;
     }
