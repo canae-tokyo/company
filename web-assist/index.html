@@ -3,216 +3,401 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Assist｜AIで診断するWeb・Google・LINEの集客導線改善</title>
-<meta name="description" content="無料AI診断で、あなたのお店・会社のWeb・Google・LINEの集客導線を10項目チェック。株式会社CANAEが提供するWeb Assistは、ホームページ制作ではなく導線改善支援サービスです。">
+<title>ホームページ制作・改善なら Web Assist｜無料Web診断</title>
+<meta name="description" content="古い・伝わらない・問い合わせにつながりにくいホームページを見直したい中小企業・店舗向けに、無料Web診断から改善提案・制作・運用まで支援します。制作費55,000円〜。">
+<link rel="canonical" href="https://canae.tokyo/web-assist/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Web Assist">
+<meta property="og:title" content="ホームページ制作・改善なら Web Assist｜無料Web診断">
+<meta property="og:description" content="中小企業・店舗向けに、無料Web診断からホームページ制作・改善・運用まで支援します。">
+<meta property="og:url" content="https://canae.tokyo/web-assist/">
+<meta property="og:image" content="https://canae.tokyo/web-assist/assets/img/canae-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ホームページ制作・改善なら Web Assist｜無料Web診断">
+<meta name="twitter:description" content="無料Web診断から改善提案・制作・運用まで。制作費55,000円〜。">
+<meta name="theme-color" content="#0B3A53">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B3A53'/%3E%3Cpath d='M15 18h9l6 24 7-24h7l6 24 5-24h8L53 48h-9l-5-18-6 18h-8L15 18z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/css/style.css?v=20260707d">
+<link rel="preload" as="image" href="./assets/img/canae-hero.png">
+<link rel="stylesheet" href="./assets/css/style.css?v=20260717a">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://canae.tokyo/#organization",
+      "name": "株式会社CANAE",
+      "url": "https://canae.tokyo/",
+      "email": "webassist@canae.tokyo"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://canae.tokyo/web-assist/#website",
+      "name": "Web Assist",
+      "url": "https://canae.tokyo/web-assist/",
+      "publisher": { "@id": "https://canae.tokyo/#organization" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://canae.tokyo/web-assist/#service",
+      "name": "Web Assist",
+      "serviceType": "ホームページ制作・ホームページ改善支援",
+      "provider": { "@id": "https://canae.tokyo/#organization" },
+      "areaServed": "JP",
+      "description": "中小企業・店舗・個人事業者向けに、無料Web診断からホームページ制作、改善提案、リニューアル、運用相談まで支援します。",
+      "offers": {
+        "@type": "Offer",
+        "price": "55000",
+        "priceCurrency": "JPY",
+        "description": "Starterプラン 55,000円〜。正式な費用は診断・ヒアリング後に個別見積で提示します。"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://canae.tokyo/web-assist/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ホームページがなくても申し込めますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可能です。事業内容や目的を確認し、必要なページ構成や機能をご提案します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "無料診断後に契約する必要はありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "無料診断や見積をご利用いただいたことによる契約義務はありません。正式にお申込みいただいた場合のみ契約となります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "文章や写真がなくても依頼できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可能です。ヒアリング内容をもとに文章構成を支援します。写真や動画についても、お持ちの素材を確認しながら対応方法をご案内します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "公開後の更新も依頼できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可能です。修正・更新・保守・運用を支援する月額プランをご用意しています。" }
+        },
+        {
+          "@type": "Question",
+          "name": "制作期間はどのくらいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "ページ数・機能・素材の準備状況により異なります。正式なお見積り時に、制作期間の目安をご案内します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "予算が限られている場合でも依頼できますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可能です。55,000円のStarterプランをご用意しています。必要最低限の構成から始め、事業の状況に合わせて追加することもできます。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container">
-    <a href="./" class="brand">Web<span>Assist</span></a>
-    <div class="header-cta">
-      <a href="./diagnosis/" class="btn btn-primary btn-sm">無料でAI診断する</a>
-    </div>
+  <div class="container header-inner">
+    <a href="./" class="brand brand-lockup" aria-label="Web Assist トップ">
+      <img src="./assets/img/canae-logo.png" alt="" width="56" height="56">
+      <span class="brand-text">Web<strong>Assist</strong></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="主要ナビゲーション">
+      <a href="#service">サービス内容</a>
+      <a href="#diagnosis">無料Web診断</a>
+      <a href="#pricing">料金</a>
+      <a href="#flow">制作の流れ</a>
+      <a href="#faq">よくある質問</a>
+    </nav>
+    <a href="./diagnosis/" class="btn btn-primary btn-sm header-action" data-wa-event="cta_header">無料Web診断を申し込む</a>
   </div>
 </header>
 
-<section class="hero hero-animated">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow">Web × Google × LINE 集客導線診断</div>
-      <h1>検索されない。連絡が来ない。<br>それ、Web導線の問題かもしれません。</h1>
-      <p class="lead">無料AI診断。結果は数分以内にメールとこの画面でお届けします。表示速度・SEO・スマホ対応・Google・LINEなど10項目を無料でチェックします。</p>
-      <div class="hero-actions">
-        <a href="./diagnosis/" class="btn btn-primary">無料でAI診断する</a>
-        <a href="#pricing" class="btn btn-secondary">料金プランを見る</a>
-      </div>
-      <p class="hero-note">※本診断はAIによる簡易評価です。専門家による詳細診断ではありません。</p>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="route-map">
-        <div class="route-panel">
-          <div class="route-panel-header">
-            <span>LIVE DIAGNOSIS</span>
-            <strong>Web Assist</strong>
-          </div>
-          <div class="route-stack">
-            <div class="route-node node-web">
-              <span class="node-kicker">WEB</span>
-              <strong>表示速度・SEO・CTA</strong>
-              <i></i>
-            </div>
-            <div class="route-node node-google">
-              <span class="node-kicker">GOOGLE</span>
-              <strong>検索・GBP・アクセス解析</strong>
-              <i></i>
-            </div>
-            <div class="route-node node-line">
-              <span class="node-kicker">LINE</span>
-              <strong>友だち追加・再来店導線</strong>
-              <i></i>
-            </div>
-          </div>
-          <div class="route-output">
-            <span>改善提案</span>
-            <strong>3件を自動抽出</strong>
-          </div>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">WebCare Monitor Integrated</p>
+        <h1><span>見た目だけでなく、運用まで診る。</span>無料Web診断を、5軸スコアへ。</h1>
+        <p class="lead">表示速度、スマホ対応、導線、信頼性、情報の鮮度を整理し、再構築・改善・部分改善・Monitor継続のどこから始めるべきかを判定します。</p>
+        <div class="hero-actions">
+          <a href="./diagnosis/" class="btn btn-primary" data-wa-event="cta_hero">無料Web診断を申し込む</a>
+          <a href="#pricing" class="btn btn-secondary">料金プランを見る</a>
+          <a href="https://lin.ee/n2DAh3V" class="btn btn-line" target="_blank" rel="noopener noreferrer" aria-label="LINE公式アカウントを開いて気軽に相談する" data-wa-event="cta_line_hero">LINEで気軽に相談する</a>
         </div>
-        <div class="route-connector"></div>
-        <div class="route-summary">
-          <span>ESTIMATE</span>
-          <strong>¥50,000</strong>
-          <em>プラン・オプションに即時反映</em>
+        <p class="hero-note">制作費55,000円〜／診断後の契約義務なし</p>
+        <p class="line-note">正式なお申し込みは専用フォームで受け付けています。</p>
+      </div>
+      <div class="hero-visual">
+        <picture>
+          <img src="./assets/img/canae-hero.png" alt="Canae Tokyoの新ブランドイメージを反映したWeb Assistの診断ビジュアル" width="1600" height="1067" fetchpriority="high">
+        </picture>
+        <div class="hero-scan" aria-hidden="true"></div>
+        <div class="hero-panel" aria-label="無料Web診断の概要">
+          <span>5 Axis Diagnosis</span>
+          <strong>自動診断とスタッフ確認で分類</strong>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-alt">
-  <div class="container">
-    <div class="eyebrow">こんなお悩みありませんか</div>
-    <h2>一つでも当てはまれば、診断の価値があります</h2>
-    <ul class="issue-list grid grid-2">
-      <li>ホームページが存在しない、または10年以上更新していない</li>
-      <li>スマホで見たときに表示が崩れている</li>
-      <li>お問い合わせや電話が少ない</li>
-      <li>Google検索で自分のお店が見つからない</li>
-      <li>Googleビジネスプロフィールを整備していない</li>
-      <li>LINE公式アカウントを持っているが使いこなせていない</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="eyebrow">無料AI診断</div>
-    <h2>URLを送るだけ。10項目をAIが自動でチェックします。</h2>
-    <p>表示速度・SEO・スマホ対応・SSL・CTA・UI/UX・コンテンツ量・LINE導線・Google導線・アクセス解析の10項目を診断し、改善のポイントを分かりやすく整理してお見せします。</p>
-    <div class="card mt-32">
-      <p class="small">診断は非同期で処理されます。フォーム送信後、結果は数分以内にメールとこの画面でお届けします。</p>
-      <a href="./diagnosis/" class="btn btn-primary">無料でAI診断する</a>
+  <section class="section-alt" id="issues">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Issues</p>
+        <h2>こんなお悩みはありませんか？</h2>
+      </div>
+      <div class="issue-grid">
+        <div class="icon-card"><span aria-hidden="true">01</span><p>ホームページを長く更新していない</p></div>
+        <div class="icon-card"><span aria-hidden="true">02</span><p>スマートフォンで見づらい</p></div>
+        <div class="icon-card"><span aria-hidden="true">03</span><p>会社やサービスの強みが伝わっていない</p></div>
+        <div class="icon-card"><span aria-hidden="true">04</span><p>問い合わせにつながらない</p></div>
+        <div class="icon-card"><span aria-hidden="true">05</span><p>制作費が分かりにくい</p></div>
+        <div class="icon-card"><span aria-hidden="true">06</span><p>制作会社へ相談しづらい</p></div>
+        <div class="icon-card"><span aria-hidden="true">07</span><p>何を直すべきか分からない</p></div>
+        <div class="icon-card"><span aria-hidden="true">08</span><p>何から始めればよいか分からない</p></div>
+      </div>
+      <p class="section-note">ホームページは、存在しているだけでは十分ではありません。Web Assistは、現在の課題を整理し、今の事業に合った改善方法をご提案します。</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-alt" id="pricing">
-  <div class="container">
-    <div class="eyebrow">料金プラン</div>
-    <h2>Starter 55,000円〜。主力はBusiness Standard。</h2>
-    <p class="small">※表示価格は税込です。「55,000円〜」はStarterプラン（1ページ・基本機能のみ）の価格です。内容や追加オプションにより金額は変動します。成果（集客数・売上等）を保証するものではありません。</p>
-    <div class="grid grid-3 mt-32">
-      <div class="card plan-card">
-        <h3>Starter</h3>
-        <div class="plan-price">¥55,000<small>〜（税込）</small></div>
-        <ul class="issue-list">
-          <li>1ページ・スマホ対応</li>
-          <li>問い合わせフォーム・SSL</li>
-          <li>Googleマップ・SNS連携</li>
+  <section id="service">
+    <div class="container split-section">
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>Web Assistとは</h2>
+        <p>Web Assistは、中小企業・店舗・個人事業者向けのホームページ制作・改善支援サービスです。</p>
+        <p>現在のホームページや事業内容を確認し、必要な改善点を整理したうえで、サイト構成・必要機能・費用をご提案します。</p>
+        <p>不要な機能や過剰な制作を勧めるのではなく、事業目的と予算に合った現実的なホームページを構築します。</p>
+      </div>
+      <div class="support-list" aria-label="支援範囲">
+        <span>無料Web診断</span>
+        <span>現状分析</span>
+        <span>改善提案</span>
+        <span>ホームページ制作</span>
+        <span>リニューアル</span>
+        <span>公開支援</span>
+        <span>更新・保守</span>
+        <span>継続的な運用相談</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt" id="reasons">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Reasons</p>
+        <h2>Web Assistが選ばれる理由</h2>
+      </div>
+      <div class="reason-grid">
+        <article class="card reason-card">
+          <span>01</span>
+          <h3>必要な改善内容と費用が分かる</h3>
+          <p>ホームページの課題を整理し、何を改善すべきか、どの程度の費用が必要かを分かりやすくご案内します。</p>
+        </article>
+        <article class="card reason-card">
+          <span>02</span>
+          <h3>AIによる分析を、人が最終確認</h3>
+          <p>AIを活用して分析や整理を効率化しますが、診断結果や提案内容は担当者が確認したうえでご案内します。</p>
+        </article>
+        <article class="card reason-card">
+          <span>03</span>
+          <h3>必要以上の機能を勧めない</h3>
+          <p>目的や予算に合わない高額な機能や、不要な構成を無理に提案しません。</p>
+        </article>
+        <article class="card reason-card">
+          <span>04</span>
+          <h3>小さな構成から始められる</h3>
+          <p>必要最低限の構成から制作を始め、事業の成長に合わせてページや機能を追加できます。</p>
+        </article>
+        <article class="card reason-card">
+          <span>05</span>
+          <h3>公開後も相談できる</h3>
+          <p>ホームページ公開後の修正・更新・保守・運用についても継続して相談できます。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="diagnosis">
+    <div class="container diagnosis-band">
+      <div>
+        <p class="eyebrow">Free Diagnosis</p>
+        <h2>無料Web診断で分かること</h2>
+        <p>現在の状態を5軸で確認し、改善の優先順位と制作・改善費用の目安を整理します。</p>
+        <ul class="check-list">
+          <li>運用・安全性</li>
+          <li>スマホ・表示品質</li>
+          <li>集客・問い合わせ導線</li>
+          <li>会社情報・法務面の信頼性</li>
+          <li>情報の鮮度</li>
+          <li>測定不能項目の明示</li>
+          <li>人的確認が必要な項目の分離</li>
+          <li>改善の優先順位</li>
+          <li>制作・改善・Monitorの分類</li>
         </ul>
+        <p class="small notice-text">※本診断はAIを活用した簡易評価を含みます。最終的な診断結果およびご提案内容は、人が確認したうえでご案内します。診断結果は成果を保証するものではありません。</p>
+        <a href="./diagnosis/" class="btn btn-primary" data-wa-event="cta_diagnosis">無料Web診断を申し込む</a>
       </div>
-      <div class="card plan-card">
-        <h3>Business Light</h3>
-        <div class="plan-price">¥148,000<small>（税込）</small></div>
-        <ul class="issue-list">
-          <li>Starter内容＋AIロゴ</li>
-          <li>Googleビジネスプロフィール</li>
-          <li>LINE公式アカウント初期設定</li>
-        </ul>
-      </div>
-      <div class="card plan-card featured">
-        <span class="plan-badge">人気No.1</span>
-        <h3>Business Standard</h3>
-        <div class="plan-price">¥248,000<small>（税込）</small></div>
-        <ul class="issue-list">
-          <li>Light内容＋AI画像・紹介文</li>
-          <li>SEO基本設定・アクセス解析</li>
-          <li>LINEリッチメニュー</li>
-        </ul>
-      </div>
-      <div class="card plan-card">
-        <h3>Business Premium</h3>
-        <div class="plan-price">¥398,000<small>（税込）</small></div>
-        <ul class="issue-list">
-          <li>Standard内容＋AIチャットボット</li>
-          <li>事例・FAQ・SEO記事まで拡張</li>
-          <li>ページ追加3点・修正4回</li>
-        </ul>
-      </div>
+      <aside class="diagnosis-panel" aria-label="診断後に提示する内容">
+        <p class="eyebrow">Report</p>
+        <h3>診断後に提示する内容</h3>
+        <ol>
+          <li><span>01</span>5軸スコア</li>
+          <li><span>02</span>重大警告</li>
+          <li><span>03</span>測定不能項目</li>
+          <li><span>04</span>診断分類</li>
+          <li><span>05</span>推奨する進め方</li>
+          <li><span>06</span>制作・改善費用の目安</li>
+        </ol>
+      </aside>
     </div>
-    <p class="small mt-32">月額保守プランはBasic 9,800円／Growth 19,800円／Partner 29,800円（税込）です。最低契約期間は6か月です。SEO・Google施策・LINE活用は短期で効果を断定できないため、継続改善を前提に設計しています。</p>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="container">
-    <div class="eyebrow">Web × Google × LINE支援</div>
-    <h2>ホームページ制作会社ではありません</h2>
-    <div class="grid grid-3">
-      <div class="card">
-        <h3>Web</h3>
-        <p class="small">スマホ対応・表示速度・導線改善など、サイトそのものの機能改善を行います。</p>
+  <section class="section-alt" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Pricing</p>
+        <h2>分かりやすい料金プラン</h2>
+        <p>診断・ヒアリング後に正式見積を提示します。表示価格は税込です。</p>
       </div>
-      <div class="card">
-        <h3>Google</h3>
-        <p class="small">Googleビジネスプロフィール・検索対策・アクセス解析まで、Google経由の集客を整えます。</p>
+      <div class="pricing-grid">
+        <article class="card plan-card">
+          <h3>Starter</h3>
+          <div class="plan-price">55,000円</div>
+          <p>小規模な会社・店舗・個人事業者向け。必要最低限の構成でホームページを始めたい方に適したプラン。</p>
+        </article>
+        <article class="card plan-card">
+          <h3>Business Light</h3>
+          <div class="plan-price">148,000円</div>
+          <p>会社やサービス内容を整理し、基本的な情報を分かりやすく掲載したい方向け。</p>
+        </article>
+        <article class="card plan-card featured">
+          <span class="plan-badge">標準プラン</span>
+          <h3>Business Standard</h3>
+          <div class="plan-price">248,000円</div>
+          <p>集客・問い合わせ導線を意識し、事業内容や強みをしっかり伝えたい方向け。</p>
+        </article>
+        <article class="card plan-card">
+          <h3>Business Premium</h3>
+          <div class="plan-price">398,000円</div>
+          <p>複数サービス・複数ページ・高度な構成や機能が必要な事業者向け。</p>
+        </article>
       </div>
-      <div class="card">
-        <h3>LINE</h3>
-        <p class="small">LINE公式アカウントの初期設定・リッチメニュー・導線設計で、既存客との接点を強化します。</p>
-      </div>
+      <p class="small mt-32">実際の料金はページ数・機能・素材の有無・更新方法などにより異なります。追加作業は別途見積となります。</p>
+      <a href="./diagnosis/" class="btn btn-primary mt-24" data-wa-event="cta_pricing">無料Web診断を申し込む</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-alt">
-  <div class="container">
-    <div class="eyebrow">よくあるご質問</div>
-    <h2>FAQ</h2>
-    <div class="card">
-      <h3>ホームページ制作会社と何が違いますか？</h3>
-      <p class="small">当社はWebサイト単体の制作だけでなく、Google・LINEを含めた集客導線全体の改善を支援する事業者です。</p>
+  <section id="scope">
+    <div class="container scope-layout">
+      <div>
+        <p class="eyebrow">Scope</p>
+        <h2>対応できる制作内容</h2>
+        <div class="tag-grid">
+          <span>コーポレートサイト</span><span>店舗サイト</span><span>サービス紹介サイト</span><span>ランディングページ</span>
+          <span>問い合わせフォーム</span><span>Googleマップ表示</span><span>SNS導線</span><span>LINE導線</span>
+          <span>スマートフォン対応</span><span>更新・保守サポート</span><span>写真・文章掲載</span><span>YouTube動画等の埋め込み</span>
+        </div>
+        <p class="small mt-24">写真・動画素材の掲載にも対応しています。お客様からご提供いただいた写真やYouTube動画などを、ホームページ内へ掲載できます。動画制作や編集をご希望の場合は、個別にご相談ください。</p>
+      </div>
     </div>
-    <div class="card mt-32">
-      <h3>効果は保証されますか？</h3>
-      <p class="small">SEO順位の向上、集客数の増加、売上向上等の成果を保証するものではありません。AI診断も簡易的な評価であり、専門家による詳細診断ではありません。</p>
-    </div>
-    <div class="card mt-32">
-      <h3>診断だけ受けることもできますか？</h3>
-      <p class="small">はい、無料AI診断のみのご利用も可能です。診断後の見積・商談は任意です。</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="text-center">
-  <div class="container">
-    <h2>まずは無料でAI診断してみませんか</h2>
-    <a href="./diagnosis/" class="btn btn-primary">無料でAI診断する</a>
-  </div>
-</section>
+  <section class="section-alt" id="flow">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Flow</p>
+        <h2>ご相談から公開までの流れ</h2>
+      </div>
+      <ol class="flow-list">
+        <li><span>01</span>無料Web診断の申込み</li>
+        <li><span>02</span>現状確認・ヒアリング</li>
+        <li><span>03</span>改善提案・見積の提示</li>
+        <li><span>04</span>内容確認・正式申込み</li>
+        <li><span>05</span>写真・文章等の素材提出</li>
+        <li><span>06</span>デザイン・制作</li>
+        <li><span>07</span>内容確認・修正</li>
+        <li><span>08</span>ホームページ公開</li>
+        <li><span>09</span>更新・保守・運用支援</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container narrow">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>よくある質問</h2>
+      </div>
+      <details open>
+        <summary>ホームページがなくても申し込めますか？</summary>
+        <p>可能です。事業内容や目的を確認し、必要なページ構成や機能をご提案します。</p>
+      </details>
+      <details>
+        <summary>無料診断後に契約する必要はありますか？</summary>
+        <p>無料診断や見積をご利用いただいたことによる契約義務はありません。内容をご確認いただいたうえで、正式にお申込みいただいた場合のみ契約となります。</p>
+      </details>
+      <details>
+        <summary>文章や写真がなくても依頼できますか？</summary>
+        <p>可能です。ヒアリング内容をもとに文章構成を支援します。写真や動画についても、現在お持ちの素材を確認しながら対応方法をご案内します。</p>
+      </details>
+      <details>
+        <summary>公開後の更新も依頼できますか？</summary>
+        <p>可能です。修正・更新・保守・運用を支援する月額プランをご用意しています。</p>
+      </details>
+      <details>
+        <summary>制作期間はどのくらいですか？</summary>
+        <p>ページ数・機能・素材の準備状況により異なります。正式なお見積り時に、制作期間の目安をご案内します。</p>
+      </details>
+      <details>
+        <summary>予算が限られている場合でも依頼できますか？</summary>
+        <p>可能です。55,000円のStarterプランをご用意しています。必要最低限の構成から始め、事業の状況に合わせて後からページや機能を追加することもできます。診断時に予算を確認し、無理のない構成をご提案します。</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>まずは、今のホームページの状態を整理しませんか？</h2>
+      <p>改善すべき点があるのか、新しく作り直すべきなのか。まずは無料Web診断で、現在の状態と必要な改善内容を分かりやすく整理します。</p>
+      <div class="cta-points">
+        <span>診断後の契約義務なし</span>
+        <span>制作費55,000円〜</span>
+        <span>AI簡易評価を含み、人が最終確認</span>
+      </div>
+      <a href="./diagnosis/" class="btn btn-primary" data-wa-event="cta_final">無料Web診断を申し込む</a>
+      <a href="https://lin.ee/n2DAh3V" class="btn btn-line mt-16" target="_blank" rel="noopener noreferrer" aria-label="LINE公式アカウントを開いて気軽に相談する" data-wa-event="cta_line_final">LINEで気軽に相談する</a>
+      <p class="line-note">正式なお申し込みは専用フォームで受け付けています。</p>
+    </div>
+  </section>
+</main>
+
+<a href="./diagnosis/" class="mobile-fixed-cta" data-wa-event="cta_mobile">無料Web診断</a>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="brand">Web<span>Assist</span></div>
-    <p class="small" style="color:#C9D6D0;">運営：株式会社CANAE</p>
-    <div class="footer-links">
-      <a href="./legal/terms/">利用規約</a>
-      <a href="./legal/tokushoho/">特定商取引法に基づく表記</a>
-      <a href="./legal/privacy/">プライバシーポリシー</a>
-      <a href="./legal/ai-policy/">AI利用ポリシー</a>
-      <a href="./legal/service-agreement/">制作・保守約款</a>
+  <div class="container footer-grid">
+    <div>
+      <div class="brand">Web<span>Assist</span></div>
+      <p class="small">運営：株式会社CANAE</p>
+      <p class="small">お問い合わせ：<a href="mailto:webassist@canae.tokyo" data-wa-event="mail_footer">webassist@canae.tokyo</a></p>
     </div>
-    <p class="footer-note">
-      「55,000円〜」はStarterプラン（1ページ・基本機能のみ）の価格です。成果（集客数・売上等）を保証するものではありません。
-      本診断はAIによる簡易評価であり、専門家による詳細診断ではありません。
-    </p>
+    <div class="footer-links">
+      <a href="./legal/terms/" data-wa-event="legal_terms">利用規約</a>
+      <a href="./legal/tokushoho/" data-wa-event="legal_tokushoho">特定商取引法に基づく表記</a>
+      <a href="./legal/privacy/" data-wa-event="legal_privacy">プライバシーポリシー</a>
+      <a href="./legal/ai-policy/" data-wa-event="legal_ai_policy">AI利用ポリシー</a>
+      <a href="./legal/service-agreement/" data-wa-event="legal_service_agreement">制作・保守約款</a>
+    </div>
+  </div>
+  <div class="container">
+    <p class="footer-note">無料診断・見積のみでは契約成立となりません。内容をご確認後、正式申込みにより契約となります。本診断はAIによる簡易評価を含み、成果を保証するものではありません。</p>
     <p class="footer-note">© <span data-current-year></span> CANAE Inc. Web Assistは株式会社CANAEが提供するサービスです。</p>
   </div>
 </footer>
 
-<script src="./assets/js/main.js?v=20260706a"></script>
+<script src="./assets/js/main.js?v=20260713a"></script>
 </body>
 </html>

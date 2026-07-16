@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>無料AI診断｜Web Assist</title>
-<meta name="description" content="URLを入力するだけで、Web・Google・LINEの集客導線を10項目AIで無料診断します。">
+<title>無料Web診断｜Web Assist</title>
+<meta name="description" content="URLを入力するだけで、ホームページの見やすさ・問い合わせ導線・改善優先順位を無料で診断します。AI簡易評価を含み、人が最終確認します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css?v=20260717a">
 </head>
 <body>
 
 <header class="site-header">
   <div class="container">
-    <a href="../" class="brand">Web<span>Assist</span></a>
+    <a href="../" class="brand brand-lockup">
+      <img src="../assets/img/canae-logo.png" alt="" width="56" height="56">
+      <span class="brand-text">Web<strong>Assist</strong></span>
+    </a>
   </div>
 </header>
 
@@ -21,9 +24,9 @@
   <div class="container" style="max-width:640px;">
 
     <div id="form-view">
-      <div class="eyebrow">無料AI診断</div>
-      <h1>無料AI診断。結果は数分以内にメールとこの画面でお届けします。</h1>
-      <p class="small">診断は非同期で処理されるため、送信後すぐには結果が表示されません。ページを閉じていただいても、結果はメールでお届けします。</p>
+      <div class="eyebrow">無料Web診断</div>
+      <h1>無料Web診断。5軸スコアで、次に取るべき選択肢を整理します。</h1>
+      <p class="small">診断は非同期で処理されます。自動判定が難しい項目はスタッフ確認に回し、確認前に法務・反社関連の疑いを顧客画面へ表示しません。</p>
 
       <form id="diagnosis-form" class="card mt-32" novalidate>
         <div class="form-field">
@@ -42,6 +45,44 @@
           <label for="phone">電話番号（任意）</label>
           <input type="tel" id="phone" name="phone">
         </div>
+        <div class="form-field">
+          <label for="business_type">業種・事業内容（任意）</label>
+          <input type="text" id="business_type" name="business_type" placeholder="例：美容室、士業、BtoBサービス">
+        </div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="has_ecommerce">EC・通信販売・有料オンライン契約</label>
+            <select id="has_ecommerce" name="has_ecommerce">
+              <option value="">不明・未回答</option>
+              <option value="true">あり</option>
+              <option value="false">なし</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="needs_update_content">ブログ・お知らせ更新</label>
+            <select id="needs_update_content" name="needs_update_content">
+              <option value="">不明・未回答</option>
+              <option value="true">必要</option>
+              <option value="false">不要</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="needs_google_map">来店・訪問・拠点案内</label>
+            <select id="needs_google_map" name="needs_google_map">
+              <option value="">不明・未回答</option>
+              <option value="true">必要</option>
+              <option value="false">不要</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="needs_contact_form">問い合わせフォーム</label>
+            <select id="needs_contact_form" name="needs_contact_form">
+              <option value="">不明・未回答</option>
+              <option value="true">必要</option>
+              <option value="false">不要</option>
+            </select>
+          </div>
+        </div>
 
         <div class="checkbox-field">
           <input type="checkbox" id="consent_terms" required>
@@ -53,11 +94,11 @@
         </div>
         <div class="checkbox-field">
           <input type="checkbox" id="consent_diagnosis_disclaimer" required>
-          <label for="consent_diagnosis_disclaimer">本診断はAIによる簡易評価であり、専門家による詳細診断ではなく、成果を保証するものではないことを理解しました</label>
+          <label for="consent_diagnosis_disclaimer">本診断はAIを活用した簡易評価を含み、人が最終確認するものであり、成果を保証するものではないことを理解しました</label>
         </div>
 
         <p class="form-error" id="form-error"></p>
-        <button type="submit" class="btn btn-primary btn-block mt-32" id="submit-btn">無料でAI診断する</button>
+        <button type="submit" class="btn btn-primary btn-block mt-32" id="submit-btn">無料Web診断を申し込む</button>
       </form>
     </div>
 
@@ -68,15 +109,33 @@
       <p class="small" id="pending-status">状況を確認中…</p>
     </div>
 
+    <div id="manual-review-view" class="status-panel" style="display:none;">
+      <h2>スタッフ確認に進みました</h2>
+      <p>自動判定だけでは確定できない項目があるため、担当者が確認します。確認後、診断結果をメールでお届けします。</p>
+      <p class="small" id="manual-review-summary"></p>
+    </div>
+
     <div id="result-view" style="display:none;">
       <div class="eyebrow">診断結果</div>
       <h2>あなたのサイトの診断結果です</h2>
-      <div class="card">
-        <canvas id="radar-chart" width="400" height="400" role="img" aria-label="診断結果レーダーチャート"></canvas>
+      <div class="result-summary card">
+        <div>
+          <span class="result-kicker">Final Route</span>
+          <strong id="route-label">判定中</strong>
+        </div>
+        <div>
+          <span class="result-kicker">Total Score</span>
+          <strong id="total-score">--</strong>
+        </div>
       </div>
+      <div class="card mt-32">
+        <canvas id="radar-chart" width="400" height="400" role="img" aria-label="5軸診断結果レーダーチャート"></canvas>
+      </div>
+      <div id="diagnosis-notices" class="mt-32"></div>
+      <div id="item-result-list" class="card mt-32"></div>
       <div id="recommend-list" class="card mt-32"></div>
       <div class="text-center mt-32">
-        <a href="../estimate/" id="to-estimate-btn" class="btn btn-primary">この結果で見積を見る</a>
+        <a href="../estimate/" id="to-estimate-btn" class="btn btn-primary" data-cta-type="">この結果で見積を見る</a>
       </div>
     </div>
 
@@ -97,13 +156,13 @@
       <a href="../legal/ai-policy/">AI利用ポリシー</a>
       <a href="../legal/service-agreement/">制作・保守約款</a>
     </div>
-        <p class="footer-note">「55,000円〜」はStarterプラン（1ページ・基本機能のみ）の価格です。成果（集客数・売上等）を保証するものではありません。本診断はAIによる簡易評価であり、専門家による詳細診断ではありません。</p>
+        <p class="footer-note">「55,000円〜」はStarterプラン（1ページ・基本機能のみ）の価格です。成果（集客数・売上等）を保証するものではありません。本診断はAIを活用した簡易評価を含み、人が最終確認します。</p>
 <p class="footer-note">© <span data-current-year></span> CANAE Inc.</p>
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-<script src="../assets/js/main.js?v=20260706a"></script>
-<script src="../assets/js/diagnosis.js?v=20260707e"></script>
+<script src="../assets/js/main.js?v=20260717a"></script>
+<script src="../assets/js/diagnosis.js?v=20260717a"></script>
 </body>
 </html>
