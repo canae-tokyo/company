@@ -60,6 +60,13 @@
     }
 
     /* ── Header: company name vertical ── */
+    .brand-logo {
+      display: block;
+      width: min(138px, 46vw);
+      height: auto;
+      margin: 0 auto 30px;
+    }
+
     .company-label {
       font-family: 'Noto Serif JP', serif;
       font-weight: 300;
@@ -67,8 +74,9 @@
       letter-spacing: 0.25em;
       color: var(--mid);
       writing-mode: horizontal-tb;
-      margin-bottom: 48px;
+      margin-bottom: 36px;
       text-transform: uppercase;
+      text-align: center;
     }
 
     /* ── Name block ── */
@@ -167,6 +175,31 @@
 
     .contact-value:hover {
       color: var(--mid);
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      line-height: 1.7;
+    }
+
+    .contact-type {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .business-hours {
+      display: block;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
     }
 
     /* ── Links section ── */
@@ -285,6 +318,7 @@
 
   <main class="card">
 
+    <img class="brand-logo" src="../../Ca_logo_gc.png" alt="株式会社CANAE ロゴ">
     <p class="company-label">株式会社 CANAE</p>
 
     <div class="name-block">
@@ -301,7 +335,14 @@
     <ul class="contact-list" aria-label="連絡先">
       <li class="contact-item">
         <span class="contact-label">Tel</span>
-        <a class="contact-value" href="tel:+810361611230">03-6161-1230</a>
+        <span class="contact-line">
+          <span class="contact-type">Office</span>
+          <a class="contact-value" href="tel:0361611230">03-6161-1230</a>
+        </span>
+        <span class="contact-line">
+          <span class="contact-type">iPhone</span>
+          <a class="contact-value" href="tel:07089097755">070-8909-7755</a>
+        </span>
       </li>
       <li class="contact-item">
         <span class="contact-label">Email</span>
@@ -312,6 +353,10 @@
         <address class="contact-value" style="font-style:normal; line-height:1.7;">
           〒160-0023<br>
           東京都新宿区西新宿3-5-12-209
+          <span class="business-hours">
+            営業時間<br>
+            平日 9:00〜18:00
+          </span>
         </address>
       </li>
     </ul>

@@ -2,11 +2,10 @@ BEGIN:VCARD
 VERSION:3.0
 FN:佐藤 奏衣
 N:佐藤;奏衣;;;
-FN:Sato Kanae
-N:Sato;Kanae;;;
 ORG:株式会社CANAE
 TITLE:CEO
-TEL;TYPE=WORK:03-6161-1230
+TEL;TYPE=WORK,VOICE:03-6161-1230
+TEL;TYPE=CELL,VOICE:070-8909-7755
 EMAIL:hello@canae.tokyo
 ADR;TYPE=WORK:;;西新宿3-5-12-209;新宿区;東京都;160-0023;日本
 URL:https://canae.tokyo/
