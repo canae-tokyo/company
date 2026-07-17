@@ -65,6 +65,37 @@
       width: min(138px, 46vw);
       height: auto;
       margin: 0 auto 30px;
+      opacity: 0;
+      filter: drop-shadow(0 16px 22px rgba(10, 10, 10, 0.08));
+      transform: translateY(8px) scale(0.985);
+      animation: logo-reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards,
+                 logo-float 5.8s ease-in-out 1.8s infinite;
+      transform-origin: 50% 50%;
+      will-change: opacity, transform, filter;
+    }
+
+    @keyframes logo-reveal {
+      0% {
+        opacity: 0;
+        filter: blur(8px) drop-shadow(0 18px 24px rgba(10, 10, 10, 0.04));
+        transform: translateY(10px) scale(0.975);
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0) drop-shadow(0 16px 22px rgba(10, 10, 10, 0.08));
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes logo-float {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 16px 22px rgba(10, 10, 10, 0.08));
+      }
+      50% {
+        transform: translateY(-4px) scale(1.006);
+        filter: drop-shadow(0 20px 28px rgba(10, 10, 10, 0.1));
+      }
     }
 
     .company-label {
@@ -299,7 +330,15 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .brand-logo {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     @media (prefers-color-scheme: dark) {
@@ -363,11 +402,7 @@
 
     <nav class="links-section" aria-label="リンク">
       <a class="link-row" href="https://canae.tokyo/" target="_blank" rel="noopener">
-        <span class="link-name">会社サイト</span>
-        <span class="link-arrow" aria-hidden="true">→</span>
-      </a>
-      <a class="link-row" href="https://canae.tokyo/company/#company" target="_blank" rel="noopener">
-        <span class="link-name">会社概要</span>
+        <span class="link-name">コーポレートサイト</span>
         <span class="link-arrow" aria-hidden="true">→</span>
       </a>
     </nav>
