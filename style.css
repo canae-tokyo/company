@@ -148,18 +148,7 @@ img {
     color: var(--primary-dark);
 }
 
-.nav a.nav-web-assist {
-    font-weight: 700;
-    color: var(--primary-dark);
-    letter-spacing: 0.02em;
-    animation: navSoftBlink 2.8s ease-in-out infinite;
-}
-
-.nav a.nav-web-assist:hover {
-    color: var(--brand-gold);
-}
-
-.nav a:not(.btn-small)::after {
+.nav a:not(.btn-small):not(.web-assist-brand)::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -174,25 +163,68 @@ img {
     width: 100%;
 }
 
-.service-link {
-    color: var(--primary-dark);
-    font-weight: 500;
-    border-bottom: 1px solid rgba(201, 170, 114, 0.48);
+.web-assist-brand {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: #1e2432;
+    vertical-align: middle;
 }
 
-.service-link:hover {
-    color: var(--brand-gold);
-    border-bottom-color: currentColor;
+.web-assist-brand-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
-@keyframes navSoftBlink {
+.web-assist-gradient-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 9999px;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        #22d3ee 25%,
+        #6366f1 50%,
+        #ec4899 75%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: webAssistShimmer 3.5s ease-in-out infinite;
+}
+
+.web-assist-brand-nav {
+    font-size: 0.9rem !important;
+    padding: 2px 0;
+}
+
+.web-assist-brand-nav .web-assist-gradient-bar {
+    height: 2px;
+}
+
+.web-assist-brand-card {
+    margin-top: 8px;
+    font-size: clamp(1.45rem, 2.1vw, 1.75rem);
+}
+
+.web-assist-brand:hover {
+    color: #1e2432;
+}
+
+.web-assist-brand:hover .web-assist-gradient-bar {
+    filter: saturate(1.25) brightness(1.08);
+}
+
+@keyframes webAssistShimmer {
     0%, 100% {
-        opacity: 1;
-        text-shadow: 0 0 0 rgba(201, 170, 114, 0);
+        background-position: 100% 0;
     }
     50% {
-        opacity: 0.68;
-        text-shadow: 0 0 10px rgba(201, 170, 114, 0.22);
+        background-position: 0 0;
     }
 }
 
@@ -929,6 +961,66 @@ td {
     border-bottom-color: currentColor;
 }
 
+/* --- Corporate Legal --- */
+.legal-page {
+    padding: 150px 0 90px;
+    background: var(--bg);
+}
+
+.legal-document {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px clamp(24px, 5vw, 64px);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft);
+}
+
+.legal-document h1 {
+    margin-bottom: 12px;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    letter-spacing: 0.02em;
+}
+
+.legal-document .legal-lead,
+.legal-document .legal-updated {
+    color: var(--text-light);
+}
+
+.legal-document h2 {
+    margin: 42px 0 14px;
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+}
+
+.legal-document p,
+.legal-document li {
+    line-height: 2;
+}
+
+.legal-document ul {
+    padding-left: 1.4em;
+    list-style: disc;
+}
+
+.legal-document .legal-updated {
+    margin-top: 48px;
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .legal-page {
+        padding: 140px 0 60px;
+    }
+
+    .legal-document {
+        padding: 36px 22px;
+        border-radius: 20px;
+    }
+}
+
 /* Company kana / furigana display */
 .company-kana {
     font-size: 0.85em;
@@ -1047,6 +1139,12 @@ td {
         padding: 0 2px;
         white-space: nowrap;
         font-size: 0.78rem;
+    }
+
+    .web-assist-brand-nav {
+        font-size: 0.78rem !important;
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     .btn-small {

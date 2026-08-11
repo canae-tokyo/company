@@ -1,0 +1,8 @@
+source_url,target_url,status_code,preserve_query_string
+https://canae.tokyo/web-assist,https://webassist.canae.tokyo/,301,true
+https://canae.tokyo/web-assist/,https://webassist.canae.tokyo/,301,true
+https://canae.tokyo/web-assist/legal/privacy/*,https://canae.tokyo/privacy/,301,true
+https://canae.tokyo/web-assist/legal/terms/*,https://webassist.canae.tokyo/legal/terms/,301,true
+https://canae.tokyo/web-assist/legal/service-agreement/*,https://webassist.canae.tokyo/legal/service-agreement/,301,true
+https://canae.tokyo/web-assist/legal/ai-policy/*,https://webassist.canae.tokyo/legal/ai-policy/,301,true
+https://canae.tokyo/web-assist/legal/tokushoho/*,https://webassist.canae.tokyo/legal/tokushoho/,301,true
