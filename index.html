@@ -520,6 +520,18 @@
 
         @media (max-width: 520px) {
             .symbol-link { width: min(235px, 61vw); }
+            /* iOS Safariでは透明PNGへのfilterアニメーションが白い矩形として
+               合成されることがあるため、SPはopacityとtransformだけで演出する。 */
+            .entrance-symbol {
+                background: transparent;
+                filter: none;
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                animation: symbolIrregularLandingMobile 2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            .symbol-link:hover .entrance-symbol {
+                filter: none;
+            }
             .domain-wordmark { font-size: 1.18rem; letter-spacing: 0.13em; }
             .domain-type {
                 --type-width: calc(11ch + 1.43em);
@@ -527,6 +539,21 @@
             }
             .domain-final-dot { width: calc(1ch + 0.13em); }
             .entrance-line { margin-top: 28px; }
+        }
+
+        @keyframes symbolIrregularLandingMobile {
+            0% {
+                opacity: 0;
+                transform: translateY(28px) scale(0.82);
+            }
+            64% {
+                opacity: 1;
+                transform: translateY(-4px) scale(1.025);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {

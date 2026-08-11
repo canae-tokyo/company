@@ -1145,6 +1145,8 @@ td {
         font-size: 0.78rem !important;
         padding-top: 0;
         padding-bottom: 0;
+        justify-content: center;
+        align-self: center;
     }
 
     .btn-small {
