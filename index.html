@@ -236,6 +236,321 @@
                 transform: none !important;
             }
         }
+
+        /* シンボルとドメインを分離した変則イントロ */
+        body::before {
+            background:
+                radial-gradient(circle at 33% 30%, rgba(201, 170, 114, 0.18) 0%, transparent 38%),
+                radial-gradient(circle at 68% 67%, rgba(140, 124, 104, 0.14) 0%, transparent 42%);
+            animation: entranceAmbientShift 8s 1.2s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: min(720px, 112vw);
+            aspect-ratio: 1;
+            border: 1px solid rgba(201, 170, 114, 0.22);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.18) rotate(-18deg);
+            animation: entranceRingOpen 2.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            pointer-events: none;
+        }
+
+        .entrance-container {
+            width: min(560px, 92vw);
+            opacity: 1;
+            animation: none;
+        }
+
+        .entrance-stage {
+            position: relative;
+            display: grid;
+            justify-items: center;
+        }
+
+        .symbol-link {
+            position: relative;
+            display: block;
+            width: min(270px, 62vw);
+            border-radius: 50%;
+            animation: symbolRestingDrift 6.8s 2.35s ease-in-out infinite;
+        }
+
+        .symbol-link::before,
+        .symbol-link::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .symbol-link::before {
+            inset: -13%;
+            border: 1px solid rgba(201, 170, 114, 0.34);
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.72);
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+            animation: symbolOrbitTrace 2.3s 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .symbol-link::after {
+            inset: -22%;
+            background: radial-gradient(circle, rgba(201, 170, 114, 0.2) 0%, rgba(201, 170, 114, 0) 68%);
+            opacity: 0;
+            transform: scale(0.35);
+            animation: symbolAuraImpact 2.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .entrance-symbol {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            filter: blur(18px) drop-shadow(0 0 0 rgba(140, 124, 104, 0));
+            transform: translateY(28px) scale(0.82);
+            animation: symbolIrregularLanding 2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.55s ease;
+        }
+
+        .symbol-link:hover .entrance-symbol {
+            transform: scale(1.055) rotate(1deg);
+            filter: drop-shadow(0 15px 28px rgba(140, 124, 104, 0.34));
+        }
+
+        .domain-wordmark {
+            position: relative;
+            z-index: 3;
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-top: 12px;
+            color: var(--primary-dark);
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+            font-size: clamp(1.25rem, 4.4vw, 1.8rem);
+            font-weight: 200;
+            line-height: 1;
+            letter-spacing: 0.17em;
+        }
+
+        .domain-type {
+            position: relative;
+            display: inline-block;
+            width: 0;
+            max-width: var(--type-width);
+            overflow: hidden;
+            white-space: nowrap;
+            --type-width: calc(11ch + 1.87em);
+            --dot-left: calc(5ch + 0.85em);
+            border-right: 1px solid var(--brand-gold);
+            animation: domainTyping 1.55s 0.78s steps(11, end) forwards,
+                domainCursorBlink 0.68s 0.58s step-end infinite;
+        }
+
+        .domain-final-dot {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: var(--dot-left);
+            width: calc(1ch + 0.17em);
+            color: var(--brand-gold);
+            font-weight: 500;
+            text-align: center;
+            opacity: 0;
+            filter: blur(7px);
+            transform: translateY(-0.75em) scale(2.4);
+            animation: domainFinalDot 0.75s 2.48s cubic-bezier(0.16, 1.36, 0.3, 1) forwards,
+                domainFinalDotGlow 3.2s 3.3s ease-in-out infinite;
+        }
+
+        .domain-final-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0.45em;
+            aspect-ratio: 1;
+            border: 1px solid rgba(201, 170, 114, 0.68);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.25);
+            animation: domainDotRipple 0.9s 2.86s ease-out forwards;
+            pointer-events: none;
+        }
+
+        .domain-wordmark::after {
+            content: '';
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: -13px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--brand-gold) 25%, var(--primary-dark) 70%, transparent);
+            opacity: 0;
+            transform: scaleX(0) skewX(-18deg);
+            animation: domainTraceDraw 1.4s 3.05s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .entrance-line {
+            width: 1px;
+            height: 0;
+            margin-top: 31px;
+            opacity: 0;
+            background: var(--brand-gold);
+            animation: verticalLineDrop 1s 3.34s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .enter-link {
+            margin-top: 17px;
+            opacity: 0;
+            transform: translateY(18px) scale(0.92);
+            animation: entranceLinkSettle 1.2s 3.58s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .domain-wordmark:hover {
+            filter: drop-shadow(0 5px 10px rgba(140, 124, 104, 0.24));
+        }
+
+        .domain-wordmark,
+        .symbol-link {
+            transition: letter-spacing 0.55s ease, filter 0.55s ease;
+        }
+
+        .domain-wordmark:focus-visible,
+        .symbol-link:focus-visible,
+        .enter-link:focus-visible {
+            outline: 2px solid var(--brand-gold);
+            outline-offset: 7px;
+        }
+
+        @keyframes symbolIrregularLanding {
+            0% {
+                opacity: 0;
+                filter: blur(18px) drop-shadow(0 0 0 rgba(140, 124, 104, 0));
+                transform: translateY(28px) scale(0.82);
+            }
+            64% {
+                opacity: 1;
+                filter: blur(1px) drop-shadow(0 15px 30px rgba(140, 124, 104, 0.24));
+                transform: translateY(-4px) scale(1.025);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0) drop-shadow(0 9px 22px rgba(140, 124, 104, 0.2));
+                transform: none;
+            }
+        }
+
+        @keyframes symbolOrbitTrace {
+            0% { opacity: 0; transform: rotate(-90deg) scale(0.72); }
+            42% { opacity: 0.38; }
+            100% { opacity: 0; transform: rotate(190deg) scale(1.08); }
+        }
+
+        @keyframes symbolAuraImpact {
+            0% { opacity: 0; transform: scale(0.35); }
+            52% { opacity: 0.62; }
+            100% { opacity: 0.35; transform: scale(1); }
+        }
+
+        @keyframes symbolRestingDrift {
+            0%, 100% { transform: translate(0, 0) rotate(0); }
+            32% { transform: translate(-4px, -7px) rotate(-0.8deg); }
+            68% { transform: translate(5px, -3px) rotate(0.65deg); }
+        }
+
+        @keyframes domainTyping {
+            from { width: 0; }
+            to { width: var(--type-width); }
+        }
+
+        @keyframes domainCursorBlink {
+            0%, 48% { border-right-color: var(--brand-gold); }
+            49%, 100% { border-right-color: transparent; }
+        }
+
+        @keyframes domainFinalDot {
+            0% { opacity: 0; filter: blur(7px); transform: translateY(-0.75em) scale(2.4); }
+            64% { opacity: 1; filter: blur(0); transform: translateY(0.1em) scale(0.78); }
+            100% { opacity: 1; filter: blur(0); transform: none; }
+        }
+
+        @keyframes domainDotRipple {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
+            38% { opacity: 0.72; }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(4.2); }
+        }
+
+        @keyframes domainFinalDotGlow {
+            0%, 100% { text-shadow: 0 0 0 rgba(201, 170, 114, 0); }
+            50% { text-shadow: 0 0 12px rgba(201, 170, 114, 0.58); }
+        }
+
+        @keyframes domainTraceDraw {
+            0% { opacity: 0; transform: scaleX(0) skewX(-18deg); }
+            65% { opacity: 0.55; transform: scaleX(1.08) skewX(-18deg); }
+            100% { opacity: 0.35; transform: scaleX(1) skewX(-18deg); }
+        }
+
+        @keyframes verticalLineDrop {
+            from { height: 0; opacity: 0; }
+            to { height: 28px; opacity: 0.55; }
+        }
+
+        @keyframes entranceLinkSettle {
+            from { opacity: 0; transform: translateY(18px) scale(0.92); letter-spacing: 2px; }
+            to { opacity: 0.68; transform: none; letter-spacing: 4px; }
+        }
+
+        @keyframes entranceRingOpen {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.18) rotate(-18deg); }
+            48% { opacity: 0.48; }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15) rotate(12deg); }
+        }
+
+        @keyframes entranceAmbientShift {
+            0% { opacity: 0.38; transform: scale(1) translate(0, 0); }
+            100% { opacity: 0.92; transform: scale(1.08) translate(1.5%, -1%); }
+        }
+
+        @media (max-width: 520px) {
+            .symbol-link { width: min(235px, 61vw); }
+            .domain-wordmark { font-size: 1.18rem; letter-spacing: 0.13em; }
+            .domain-type {
+                --type-width: calc(11ch + 1.43em);
+                --dot-left: calc(5ch + 0.65em);
+            }
+            .domain-final-dot { width: calc(1ch + 0.13em); }
+            .entrance-line { margin-top: 28px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body::after,
+            .symbol-link,
+            .symbol-link::before,
+            .symbol-link::after,
+            .entrance-symbol,
+            .domain-type,
+            .domain-final-dot,
+            .domain-final-dot::after,
+            .domain-wordmark::after,
+            .entrance-line,
+            .enter-link {
+                animation: none !important;
+                opacity: 1 !important;
+                filter: none !important;
+                transform: none !important;
+            }
+            .domain-type { width: var(--type-width) !important; border-right-color: transparent !important; }
+            .domain-final-dot { opacity: 1 !important; }
+            .entrance-line { height: 28px !important; }
+        }
+
     </style>
 
     <!-- 構造化データ（Organization） -->
@@ -266,9 +581,14 @@
 
 <body>
     <div class="entrance-container">
-        <a href="company/" aria-label="株式会社CANAEのサイトに入る" class="logo-frame">
-            <img src="assets/Ca_logo_gb.png" alt="株式会社CANAE 新ロゴ" class="entrance-logo">
-        </a>
+        <div class="entrance-stage">
+            <a href="company/" aria-label="株式会社CANAEのサイトに入る" class="symbol-link">
+                <img src="Ca_logo.png" alt="CANAE シンボル" class="entrance-symbol">
+            </a>
+            <a href="company/" class="domain-wordmark" aria-label="canae.tokyo">
+                <span class="domain-type" aria-hidden="true">canae tokyo<span class="domain-final-dot">.</span></span>
+            </a>
+        </div>
         <span class="entrance-line" aria-hidden="true"></span>
         <a href="company/" class="enter-link">Enter Site</a>
     </div>
