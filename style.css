@@ -1269,8 +1269,9 @@ td {
 }
 
 .aligent-logo-link {
-    display: inline-block;
-    margin: 20px 0 0;
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
 }
 
 .aligent-card-logo {
