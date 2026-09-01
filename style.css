@@ -1268,18 +1268,25 @@ td {
     text-decoration-color: var(--primary-dark);
 }
 
-.aligent-coming-soon-badge {
+.aligent-logo-link {
     display: inline-block;
-    margin-left: 8px;
-    padding: 2px 10px;
-    font-size: 11px;
+    margin: 8px 0 4px;
+}
+
+.aligent-card-logo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+}
+
+.aligent-coming-soon-badge {
+    display: block;
+    margin: 6px 0 0;
+    font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.04em;
-    color: #fff;
-    background: var(--primary-dark);
-    border-radius: 999px;
-    vertical-align: middle;
-    white-space: nowrap;
+    color: var(--primary-dark);
 }
 
 .aligent-service-link {
