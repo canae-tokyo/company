@@ -1270,32 +1270,42 @@ td {
 
 .aligent-logo-link {
     display: inline-block;
-    margin: 8px 0 4px;
+    margin: 20px 0 0;
 }
 
 .aligent-card-logo {
     display: block;
-    width: 120px;
-    height: 120px;
+    width: clamp(170px, 35%, 220px);
+    height: auto;
     object-fit: contain;
 }
 
-.aligent-coming-soon-badge {
+@media (max-width: 600px) {
+    .aligent-card-logo { width: clamp(160px, 50vw, 200px); }
+}
+
+.service-card .aligent-coming-soon-badge {
     display: block;
-    margin: 6px 0 0;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--primary-dark);
+    margin: 18px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #2F86C9;
+    background: none;
 }
 
 .aligent-service-link {
-    color: var(--primary-dark);
+    color: var(--text);
     font-size: 0.9rem;
+    font-weight: 700;
     text-decoration: none;
+    border-bottom: 1.5px solid #2F86C9;
+    padding-bottom: 3px;
+    display: inline-block;
+    margin-top: 14px;
 }
 
 .aligent-service-link:hover,
 .aligent-service-link:focus-visible {
-    text-decoration: underline;
+    opacity: 0.7;
 }
