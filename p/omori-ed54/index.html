@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<title>大森 泰 | CANAE</title>
+<style>
+:root{
+  --ink:#11110f;--paper:#f7f5f0;--paper2:#fff;--muted:#77736c;--line:#ddd7cc;
+  --dark:#0a0a0a;--dark2:#131313;--greige:#aaa197;--accent:#8b1e1e;--gold:#b59a6a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#ece9e2;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;letter-spacing:.02em}
+a{color:inherit;text-decoration:none} button{font:inherit}
+.shell{max-width:1120px;margin:0 auto;background:var(--paper2);min-height:100vh;box-shadow:0 0 0 1px rgba(0,0,0,.05)}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid #ece8df;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center}.brandLogo{display:block;height:50px;width:auto;max-width:150px;object-fit:contain}
+.nav{display:flex;gap:24px;font-size:11px;letter-spacing:.16em;color:#56524d}.nav a:hover{opacity:.55}
+
+.hero{background:var(--dark);color:#fff;display:grid;grid-template-columns:.9fr 1.1fr;min-height:720px;overflow:hidden}
+.heroCopy{padding:88px 60px 72px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.eyebrow{font-size:10px;letter-spacing:.28em;color:#aaa;margin-bottom:26px}
+h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:68px;font-weight:500;line-height:1.05;margin:0 0 10px}.roman{font-family:Georgia,serif;font-size:17px;letter-spacing:.16em;color:#c8c8c8;margin-bottom:58px}
+.catch{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:38px;line-height:1.65;margin:0 0 22px;letter-spacing:.04em}
+.subcatch{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.9;color:#c9c9c9;margin:0}
+.heroVisual{position:relative;min-height:720px;overflow:hidden;background:#0d0d0d}
+.heroVisualSource{position:absolute;z-index:0;top:50%;left:0;height:150%;width:auto;max-width:none;display:block;filter:grayscale(1) contrast(1.12) brightness(.76);transform:translate3d(0,-50%,0);animation:heroPanImage 30s ease-in-out infinite;will-change:transform}
+.heroVisual:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0a0a0a 0%,rgba(10,10,10,.48) 20%,rgba(10,10,10,.06) 58%),linear-gradient(0deg,rgba(0,0,0,.38),transparent 45%)}
+.visualBadge{position:absolute;z-index:2;right:28px;bottom:26px;padding:10px 12px;border:1px solid rgba(255,255,255,.22);background:rgba(10,10,10,.38);backdrop-filter:blur(8px);font-size:10px;letter-spacing:.18em;color:#eee}
+.heroVisual:after{content:"十三面待ち";position:absolute;z-index:2;left:28px;top:26px;font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:12px;letter-spacing:.28em;color:rgba(255,255,255,.72);writing-mode:vertical-rl}
+
+.actions{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-bottom:1px solid var(--line)}
+.action{padding:24px 16px;text-align:center;border-right:1px solid var(--line);transition:.2s;background:#fff}.action:last-child{border-right:0}.action:hover{background:#f7f5f0}.actionIcon{width:42px;height:42px;margin:0 auto 9px;border:1px solid #bfb9ae;border-radius:50%;display:grid;place-items:center}.actionIcon svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8}.actionLabel{font-size:12px}
+
+.profile{padding:58px 64px 66px;display:grid;grid-template-columns:1fr 1fr;gap:60px;border-bottom:1px solid var(--line)}
+.label{font-size:10px;letter-spacing:.22em;color:#8c877f;margin-bottom:10px}.infoLine{font-family:Georgia,"Yu Mincho",serif;font-size:25px;margin:0 0 8px}.infoMeta{font-size:13px;color:#777;margin-bottom:24px;line-height:1.8}.linkLine{display:inline-flex;align-items:center;gap:8px;font-size:14px;border-bottom:1px solid #bdb7ac;padding-bottom:4px}.smallStack{display:grid;gap:22px}
+
+.philosophy{padding:82px 64px 88px;background:#fff;border-bottom:1px solid var(--line)}
+.philosophyGrid{display:grid;grid-template-columns:.72fr 1.28fr;gap:72px;align-items:start}
+.philosophyKicker{font-size:10px;letter-spacing:.24em;color:#9a9388;margin-bottom:16px}
+.philosophy h2{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:42px;line-height:1.5;font-weight:500;margin:0}
+.philosophyText{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:17px;line-height:2.2;color:#3b3834;margin:0}
+.philosophyText strong{font-weight:500;color:#111}
+.metaphorStrip{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.metaphorItem{padding:26px 28px;border-right:1px solid var(--line)}.metaphorItem:last-child{border-right:0}
+.metaphorItem b{display:block;font-family:"Yu Mincho",serif;font-size:22px;font-weight:500;margin-bottom:8px}.metaphorItem span{font-size:12px;line-height:1.8;color:#777}
+.story{padding:92px 64px 100px;background:#faf9f6}.storyIntro{display:grid;grid-template-columns:.82fr 1.18fr;gap:72px;align-items:start;margin-bottom:58px}.storyTitle{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:48px;line-height:1.35;margin:0;font-weight:500}.storyTitle span{display:block;font-size:13px;letter-spacing:.18em;color:#888;margin-bottom:18px;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif}.storyText{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:17px;line-height:2.2;color:#36332f;margin:0}
+.storyVisual{position:relative;margin:0 0 66px;background:#090909;overflow:hidden;min-height:520px;display:flex;align-items:center}.storyVisual img{width:100%;height:100%;min-height:520px;object-fit:cover;object-position:center;display:block;filter:saturate(.9) contrast(1.04) brightness(.84);transition:transform .9s ease}.storyVisual:hover img{transform:scale(1.02)}.storyVisual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.16),transparent 38%),linear-gradient(0deg,rgba(0,0,0,.58),transparent 58%)}.storyCaption{position:absolute;z-index:2;left:34px;bottom:28px;color:#fff}.storyCaption:before{content:"WHITE POCHI";display:inline-block;margin-bottom:13px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.45);font-size:9px;letter-spacing:.28em;color:#e5d3ad}.storyCaption strong{display:block;font-family:"Yu Mincho",serif;font-size:30px;font-weight:500;margin-bottom:8px}.storyCaption span{font-size:11px;letter-spacing:.16em;color:#ddd}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.pillar{padding:38px 32px 42px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}.pillar h3{font-family:"Yu Mincho",serif;font-size:30px;font-weight:500;margin:0 0 20px}.pillar p{font-size:13px;line-height:1.95;color:#625e57;margin:0}
+
+.quote{background:#0e0e0e;color:#fff;padding:98px 64px;text-align:center}.quote p{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:42px;line-height:1.7;margin:0}.quote small{display:block;color:#999;margin-top:28px;letter-spacing:.18em}
+.footer{padding:34px 64px 44px;display:flex;justify-content:space-between;gap:24px;font-size:11px;color:#8a867f;background:#fff}.footer strong{font-weight:500;color:#333}
+
+
+/* ヒーロー画像：牌を約1.5倍に拡大し、左側から右側へゆっくり見せる */
+@keyframes heroPanImage{
+  0%{left:0;transform:translate3d(0,-50%,0);opacity:0}
+  4%,10%{left:0;transform:translate3d(0,-50%,0);opacity:1}
+  88%{left:100%;transform:translate3d(-100%,-50%,0);opacity:1}
+  94%{left:100%;transform:translate3d(-100%,-50%,0);opacity:0}
+  95%,100%{left:0;transform:translate3d(0,-50%,0);opacity:0}
+}
+
+/* 日本語・英単語の途中で不自然に折り返さない */
+.catch,.subcatch,.storyTitle,.storyText,.storyCaption,.pillar p,.quote p,.probability,.philosophyText{line-break:strict;word-break:normal;word-break:auto-phrase;overflow-wrap:normal;text-wrap:pretty}
+.noBreak{white-space:nowrap}
+
+.probability{margin-top:72px;padding:54px 48px;background:#111;color:#f6f3ec;position:relative;overflow:hidden}
+.probability:before{content:"1 / 1.7 TRILLION";position:absolute;right:-10px;top:-18px;font-family:Georgia,serif;font-size:72px;letter-spacing:.04em;color:rgba(255,255,255,.035);white-space:nowrap}
+.probabilityEyebrow{font-size:9px;letter-spacing:.26em;color:#bca77f;margin-bottom:18px}
+.probabilityContext{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:18px;line-height:2;color:#e7e1d7;max-width:820px;margin:0 0 30px}
+.probability h3{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:34px;line-height:1.55;font-weight:500;margin:0 0 18px}
+.probabilityLead{font-family:Georgia,"Yu Mincho",serif;font-size:25px;line-height:1.7;margin:0 0 28px;color:#fff}
+.probabilityLead strong{font-size:42px;font-weight:400;color:#d8c49c}
+.probabilityText{font-size:13px;line-height:2;color:#c9c4ba;max-width:760px;margin:0}
+.probabilityFormula{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.probabilityStep{border-left:1px solid rgba(255,255,255,.18);padding-left:14px}
+.probabilityStep b{display:block;font-family:Georgia,serif;font-size:19px;font-weight:400;color:#fff;margin-bottom:7px}
+.probabilityStep span{font-size:10px;line-height:1.7;color:#999}
+.probabilityNote{margin-top:22px;font-size:10px;line-height:1.8;color:#777}
+
+@media(max-width:760px){
+  .topbar{height:64px;padding:0 18px}.brandLogo{height:40px;max-width:120px}.nav{gap:14px;font-size:10px}.nav a:nth-child(2){display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}.heroCopy{padding:56px 24px 42px}h1{font-size:50px}.roman{margin-bottom:38px}.catch{font-size:30px}.subcatch{font-size:17px}.heroVisual{min-height:360px}.heroVisualSource{height:150%}.visualBadge{right:18px;bottom:18px}
+  .actions{grid-template-columns:repeat(4,1fr)}.action{padding:20px 6px}.actionLabel{font-size:10px}
+  .profile{padding:46px 24px 54px;grid-template-columns:1fr;gap:34px}.philosophy{padding:58px 24px 64px}.philosophyGrid{grid-template-columns:1fr;gap:28px}.philosophy h2{font-size:32px}.philosophyText{font-size:16px;line-height:2.05}.metaphorStrip{grid-template-columns:1fr;margin-top:36px}.metaphorItem{border-right:0;border-bottom:1px solid var(--line)}.metaphorItem:last-child{border-bottom:0}.story{padding:66px 24px 76px}.storyIntro{grid-template-columns:1fr;gap:28px;margin-bottom:40px}.storyTitle{font-size:38px}.storyText{font-size:16px;line-height:2.05}.storyVisual{min-height:430px}.storyVisual img{min-height:430px}.storyCaption{left:22px;bottom:22px}.storyCaption strong{font-size:26px}.pillars{grid-template-columns:1fr}.quote{padding:72px 24px}.quote p{font-size:31px}.footer{padding:28px 24px 38px;flex-direction:column}.probability{margin-top:48px;padding:38px 24px}.probability h3{font-size:28px}.probabilityLead{font-size:20px}.probabilityLead strong{font-size:34px}.probabilityFormula{grid-template-columns:1fr 1fr;gap:22px 14px}.probability:before{font-size:44px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.heroVisualSource{animation:none!important;left:50%;transform:translate3d(-50%,-50%,0)!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <a class="brand" href="https://canae.tokyo/" aria-label="CANAE">
+    <img class="brandLogo" src="Ca_logo_Greige.png" alt="CANAE / canae.tokyo">
+  </a>
+  <nav class="nav"><a href="#profile">PROFILE</a><a href="#story">STORY</a><a href="#contact">CONTACT</a></nav>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="page-title">
+  <div class="heroCopy">
+    <div class="eyebrow">CANAE / PHILOSOPHY PROFILE</div>
+    <h1 id="page-title">大森 泰</h1>
+    <div class="roman">Yasushi Oomori</div>
+    <p class="catch">配牌は選べない<br>待ちは自分で創る</p>
+    <p class="subcatch">麻雀の一局に重ねた<br>大森 泰の仕事観と人生観</p>
+  </div>
+  <div class="heroVisual" aria-label="国士無双十三面待ちと白ポッチをモチーフにしたビジュアル">
+    <img class="heroVisualSource" src="kokushi_13wait_header.png" alt="国士無双十三面待ちを構成する十三牌">
+    <div class="visualBadge">KOKUSHI MUSOU / 13-WAIT</div>
+  </div>
+</section>
+
+<section class="actions" aria-label="連絡アクション">
+  <a class="action" href="tel:08093212425">
+    <span class="actionIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2 2c1.6 3.1 3.9 5.4 7 7l2-2 5 2v3c0 1.1-.9 2-2 2C10.6 23 1 13.4 1 4c0-1.1.9-2 2-2h2z"/></svg></span>
+    <span class="actionLabel">電話する</span>
+  </a>
+  <a class="action" href="mailto:oomori@canae.tokyo">
+    <span class="actionIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 7 9-7"/></svg></span>
+    <span class="actionLabel">メールする</span>
+  </a>
+  <button class="action" id="vcardBtn" type="button">
+    <span class="actionIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span>
+    <span class="actionLabel">連絡先に追加</span>
+  </button>
+  <button class="action" id="shareBtn" type="button">
+    <span class="actionIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg></span>
+    <span class="actionLabel">プロフィール共有</span>
+  </button>
+</section>
+
+<section class="profile" id="profile">
+  <div>
+    <div class="label">PROFILE</div>
+    <p class="infoLine">大森 泰</p>
+    <div class="infoMeta">Yasushi Oomori</div>
+    <div class="smallStack">
+      <a class="linkLine" href="tel:08093212425">080-9321-2425 <span>／ iPhone</span></a>
+      <a class="linkLine" href="mailto:oomori@canae.tokyo">oomori@canae.tokyo</a>
+    </div>
+  </div>
+  <div class="smallStack" id="contact">
+    <div>
+      <div class="label">COMPANY</div>
+      <p class="infoLine">株式会社CANAE</p>
+      <div class="infoMeta">〒160-0023<br>東京都新宿区西新宿3丁目3番13号<br>西新宿水間ビル6F<br>平日 9:00〜18:00</div>
+      <a class="linkLine" href="https://canae.tokyo/">canae.tokyo</a>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy" aria-labelledby="philosophy-title">
+  <div class="philosophyGrid">
+    <div>
+      <div class="philosophyKicker">PHILOSOPHY / MAHJONG AS METAPHOR</div>
+      <h2 id="philosophy-title">麻雀を語りたいのではない<br>仕事と人生への向き合い方を語りたい</h2>
+    </div>
+    <p class="philosophyText">麻雀は、大森 泰の考え方を伝えるための<strong>比喩</strong>です。仕事も人生も、最初から理想の条件が揃うとは限らない。だからこそ、与えられた状況を読み、選択肢を増やし、機が来るまで準備を続ける。最後に結果を変える一手を掴めるかどうかは、運だけではなく、そこまでの構え方にあると考えています。</p>
+  </div>
+  <div class="metaphorStrip" aria-label="麻雀の比喩と仕事観">
+    <div class="metaphorItem"><b>配牌</b><span>与えられた条件や環境</span></div>
+    <div class="metaphorItem"><b>十三面待ち</b><span>選択肢を広げ、機会を逃さない準備</span></div>
+    <div class="metaphorItem"><b>白ポッチ</b><span>最後に訪れる好機を掴み切る決断</span></div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="storyIntro">
+    <h2 class="storyTitle"><span>THE METAPHOR</span>国士無双 十三面待ち</h2>
+    <p class="storyText">国士無双の十三面待ちは、十三種類のどの牌でも和了できる状態です。ここで重ねているのは役そのものではなく、<strong>可能性を広げた上で、静かに機を待つ姿勢</strong>。仕事でも、選択肢を一つに決めつけず、複数の可能性を用意し、状況が動いた瞬間に迷わず動ける状態をつくる。その考え方を、十三面待ちという麻雀のロマンで表現しています。</p>
+  </div>
+
+  <figure class="storyVisual">
+    <img src="shiropocchi_warm.png" alt="温かな光の中で白ポッチを手にした国士無双十三面待ちの麻雀ビジュアル">
+    <figcaption class="storyCaption"><strong>十三面で機を待ち、白ポッチで運を掴む</strong><span>仕事も人生も、好機を掴める位置に居続ける</span></figcaption>
+  </figure>
+
+  <div class="pillars">
+    <article class="pillar"><h3>準備</h3><p>仕事では、動き出してから考えるのではなく、先に選択肢を増やしておく。機会が来た瞬間に動ける状態まで整える。</p></article>
+    <article class="pillar"><h3>粘り</h3><p>結果がすぐに出ない時間にも意味がある。焦って手を崩さず、状況を読みながら必要な一手を待ち続ける。</p></article>
+    <article class="pillar"><h3>決断</h3><p>好機は準備した人にしか活かせない。流れが変わる一手が来たとき、迷わず掴み切ることを大切にする。</p></article>
+  </div>
+
+  <section class="probability" aria-labelledby="probability-title">
+    <div class="probabilityEyebrow">A LITTLE PLAYFULNESS / THE ODDS</div>
+    <h3 id="probability-title">それでも 白ポッチには<br>天文学的なロマンがある</h3>
+    <p class="probabilityLead">国士無双十三面待ちから<br>リーチ一発ツモ白ポッチ和了　約 <strong>1.7兆分の1</strong></p>
+    <p class="probabilityContext">これは「奇跡が起きるまで待つ」という仕事観ではありません。準備と判断を語った上で、最後に残す大森らしい遊び心です。</p><p class="probabilityText">子の配牌13枚が国士無双の十三面待ちとなり、1巡目では和了せずリーチ。その次の一発ツモで、白4枚のうち唯一の<span class="noBreak">白ポッチ</span>を引き当てる。特定の前提条件で積み上げると、その概算確率は約5.9×10⁻¹³。仕事や人生の成功確率を示す数字ではなく、麻雀という比喩の奥にあるロマンとして添えています。</p>
+    <div class="probabilityFormula" aria-label="確率計算の概要">
+      <div class="probabilityStep"><b>約1 / 72億</b><span>配牌で十三面待ち</span></div>
+      <div class="probabilityStep"><b>3 / 4</b><span>手牌の白がポッチではない</span></div>
+      <div class="probabilityStep"><b>約0.69</b><span>1巡目に和了牌を引かない</span></div>
+      <div class="probabilityStep"><b>約1 / 122</b><span>一発ツモが白ポッチ</span></div>
+    </div>
+    <div class="probabilityNote">※ 特定の牌構成・巡目・鳴きなし等の前提に基づく概算値。ルールや牌の扱いにより確率は変動します。</div>
+  </section>
+</section>
+
+<section class="quote"><p>選べないものがあっても<br>次の一手は、自分で選べる</p><small>WORK / LIFE / MAHJONG AS METAPHOR — YASUSHI OOMORI</small></section>
+</main>
+
+<footer class="footer"><div><strong>大森 泰</strong> / Yasushi Oomori</div><div>© CANAE</div></footer>
+</div>
+
+<script>
+const vcard = `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:大森 泰\r\nN:大森;泰;;;\r\nORG:株式会社CANAE\r\nTEL;TYPE=CELL,VOICE:080-9321-2425\r\nEMAIL;TYPE=WORK:oomori@canae.tokyo\r\nURL:https://canae.tokyo/\r\nADR;TYPE=WORK:;;西新宿3丁目3番13号 西新宿水間ビル6F;新宿区;東京都;160-0023;日本\r\nEND:VCARD\r\n`;
+document.getElementById('vcardBtn').addEventListener('click',()=>{
+  const blob=new Blob([vcard],{type:'text/vcard;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download='yasushi-oomori.vcf';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500);
+});
+document.getElementById('shareBtn').addEventListener('click',async()=>{
+  const data={title:'大森 泰 | CANAE',text:'大森 泰 / Yasushi Oomori',url:location.href};
+  if(navigator.share){try{await navigator.share(data)}catch(e){}}else{
+    try{await navigator.clipboard.writeText(location.href);alert('URLをコピーしました');}catch(e){alert(location.href)}
+  }
+});
+</script>
+</body>
+</html>
