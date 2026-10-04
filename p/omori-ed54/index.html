@@ -27,7 +27,7 @@ h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:68px;font-weig
 .catch{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:38px;line-height:1.65;margin:0 0 22px;letter-spacing:.04em}
 .subcatch{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:19px;line-height:1.9;color:#c9c9c9;margin:0}
 .heroVisual{position:relative;min-height:720px;overflow:hidden;background:#0d0d0d}
-.heroVisualSource{position:absolute;z-index:0;top:50%;left:0;height:150%;width:auto;max-width:none;display:block;filter:grayscale(1) contrast(1.12) brightness(.76);transform:translate3d(0,-50%,0);animation:heroPanImage 30s ease-in-out infinite;will-change:transform}
+.heroVisualSource{position:absolute;z-index:0;top:50%;left:0;height:150%;width:auto;max-width:none;display:block;filter:grayscale(1) contrast(1.12) brightness(.76);transform:translate3d(0,-50%,0);animation:heroPanImage 15s ease-in-out infinite;will-change:transform}
 .heroVisual:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,#0a0a0a 0%,rgba(10,10,10,.48) 20%,rgba(10,10,10,.06) 58%),linear-gradient(0deg,rgba(0,0,0,.38),transparent 45%)}
 .visualBadge{position:absolute;z-index:2;right:28px;bottom:26px;padding:10px 12px;border:1px solid rgba(255,255,255,.22);background:rgba(10,10,10,.38);backdrop-filter:blur(8px);font-size:10px;letter-spacing:.18em;color:#eee}
 .heroVisual:after{content:"十三面待ち";position:absolute;z-index:2;left:28px;top:26px;font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:12px;letter-spacing:.28em;color:rgba(255,255,255,.72);writing-mode:vertical-rl}
@@ -67,6 +67,7 @@ h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:68px;font-weig
 /* 日本語・英単語の途中で不自然に折り返さない */
 .catch,.subcatch,.storyTitle,.storyText,.storyCaption,.pillar p,.quote p,.probability,.philosophyText{line-break:strict;word-break:normal;word-break:auto-phrase;overflow-wrap:normal;text-wrap:pretty}
 .noBreak{white-space:nowrap}
+.keepPhrase{display:inline-block;white-space:nowrap}
 
 .probability{margin-top:72px;padding:54px 48px;background:#111;color:#f6f3ec;position:relative;overflow:hidden}
 .probability:before{content:"1 / 1.7 TRILLION";position:absolute;right:-10px;top:-18px;font-family:Georgia,serif;font-size:72px;letter-spacing:.04em;color:rgba(255,255,255,.035);white-space:nowrap}
@@ -86,7 +87,7 @@ h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:68px;font-weig
   .topbar{height:64px;padding:0 18px}.brandLogo{height:40px;max-width:120px}.nav{gap:14px;font-size:10px}.nav a:nth-child(2){display:none}
   .hero{grid-template-columns:1fr;min-height:auto}.heroCopy{padding:56px 24px 42px}h1{font-size:50px}.roman{margin-bottom:38px}.catch{font-size:30px}.subcatch{font-size:17px}.heroVisual{min-height:360px}.heroVisualSource{height:150%}.visualBadge{right:18px;bottom:18px}
   .actions{grid-template-columns:repeat(4,1fr)}.action{padding:20px 6px}.actionLabel{font-size:10px}
-  .profile{padding:46px 24px 54px;grid-template-columns:1fr;gap:34px}.philosophy{padding:58px 24px 64px}.philosophyGrid{grid-template-columns:1fr;gap:28px}.philosophy h2{font-size:32px}.philosophyText{font-size:16px;line-height:2.05}.metaphorStrip{grid-template-columns:1fr;margin-top:36px}.metaphorItem{border-right:0;border-bottom:1px solid var(--line)}.metaphorItem:last-child{border-bottom:0}.story{padding:66px 24px 76px}.storyIntro{grid-template-columns:1fr;gap:28px;margin-bottom:40px}.storyTitle{font-size:38px}.storyText{font-size:16px;line-height:2.05}.storyVisual{min-height:430px}.storyVisual img{min-height:430px}.storyCaption{left:22px;bottom:22px}.storyCaption strong{font-size:26px}.pillars{grid-template-columns:1fr}.quote{padding:72px 24px}.quote p{font-size:31px}.footer{padding:28px 24px 38px;flex-direction:column}.probability{margin-top:48px;padding:38px 24px}.probability h3{font-size:28px}.probabilityLead{font-size:20px}.probabilityLead strong{font-size:34px}.probabilityFormula{grid-template-columns:1fr 1fr;gap:22px 14px}.probability:before{font-size:44px}
+  .profile{padding:46px 24px 54px;grid-template-columns:1fr;gap:34px}.philosophy{padding:58px 24px 64px}.philosophyGrid{grid-template-columns:1fr;gap:28px}.philosophy h2{font-size:32px}.philosophyText{font-size:16px;line-height:2.05}.metaphorStrip{grid-template-columns:1fr;margin-top:36px}.metaphorItem{border-right:0;border-bottom:1px solid var(--line)}.metaphorItem:last-child{border-bottom:0}.story{padding:66px 24px 76px}.storyIntro{grid-template-columns:1fr;gap:28px;margin-bottom:40px}.storyTitle{font-size:38px}.storyText{font-size:16px;line-height:2.05}.storyVisual{min-height:430px}.storyVisual img{min-height:430px;object-position:68% center}.storyCaption{left:22px;bottom:22px}.storyCaption strong{font-size:26px}.pillars{grid-template-columns:1fr}.quote{padding:72px 24px}.quote p{font-size:31px}.footer{padding:28px 24px 38px;flex-direction:column}.probability{margin-top:48px;padding:38px 24px}.probability h3{font-size:28px}.probabilityLead{font-size:20px}.probabilityLead strong{font-size:34px}.probabilityFormula{grid-template-columns:1fr 1fr;gap:22px 14px}.probability:before{font-size:44px}.probabilityEyebrow{white-space:nowrap;font-size:8px;letter-spacing:.20em}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.heroVisualSource{animation:none!important;left:50%;transform:translate3d(-50%,-50%,0)!important}}
 </style>
@@ -171,13 +172,13 @@ h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:68px;font-weig
 
 <section class="story" id="story">
   <div class="storyIntro">
-    <h2 class="storyTitle"><span>THE METAPHOR</span>国士無双 十三面待ち</h2>
+    <h2 class="storyTitle"><span>THE METAPHOR</span><span class="keepPhrase">国士無双</span> <span class="keepPhrase">十三面待ち</span></h2>
     <p class="storyText">国士無双の十三面待ちは、十三種類のどの牌でも和了できる状態です。ここで重ねているのは役そのものではなく、<strong>可能性を広げた上で、静かに機を待つ姿勢</strong>。仕事でも、選択肢を一つに決めつけず、複数の可能性を用意し、状況が動いた瞬間に迷わず動ける状態をつくる。その考え方を、十三面待ちという麻雀のロマンで表現しています。</p>
   </div>
 
   <figure class="storyVisual">
     <img src="shiropocchi_warm.png" alt="温かな光の中で白ポッチを手にした国士無双十三面待ちの麻雀ビジュアル">
-    <figcaption class="storyCaption"><strong>十三面で機を待ち、白ポッチで運を掴む</strong><span>仕事も人生も、好機を掴める位置に居続ける</span></figcaption>
+    <figcaption class="storyCaption"><strong><span class="keepPhrase">十三面で機を待ち、</span><span class="keepPhrase">白ポッチで運を掴む</span></strong><span>仕事も人生も、好機を掴める位置に居続ける</span></figcaption>
   </figure>
 
   <div class="pillars">
@@ -188,14 +189,14 @@ h1{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;font-size:68px;font-weig
 
   <section class="probability" aria-labelledby="probability-title">
     <div class="probabilityEyebrow">A LITTLE PLAYFULNESS / THE ODDS</div>
-    <h3 id="probability-title">それでも 白ポッチには<br>天文学的なロマンがある</h3>
-    <p class="probabilityLead">国士無双十三面待ちから<br>リーチ一発ツモ白ポッチ和了　約 <strong>1.7兆分の1</strong></p>
+    <h3 id="probability-title">それでも <span class="keepPhrase">白ポッチには</span><br><span class="keepPhrase">天文学的なロマンがある</span></h3>
+    <p class="probabilityLead"><span class="keepPhrase">国士無双十三面待ちから</span><br><span class="keepPhrase">リーチ一発ツモ</span><span class="keepPhrase">白ポッチ和了</span>　約 <strong class="keepPhrase">1.7兆分の1</strong></p>
     <p class="probabilityContext">これは「奇跡が起きるまで待つ」という仕事観ではありません。準備と判断を語った上で、最後に残す大森らしい遊び心です。</p><p class="probabilityText">子の配牌13枚が国士無双の十三面待ちとなり、1巡目では和了せずリーチ。その次の一発ツモで、白4枚のうち唯一の<span class="noBreak">白ポッチ</span>を引き当てる。特定の前提条件で積み上げると、その概算確率は約5.9×10⁻¹³。仕事や人生の成功確率を示す数字ではなく、麻雀という比喩の奥にあるロマンとして添えています。</p>
     <div class="probabilityFormula" aria-label="確率計算の概要">
-      <div class="probabilityStep"><b>約1 / 72億</b><span>配牌で十三面待ち</span></div>
-      <div class="probabilityStep"><b>3 / 4</b><span>手牌の白がポッチではない</span></div>
-      <div class="probabilityStep"><b>約0.69</b><span>1巡目に和了牌を引かない</span></div>
-      <div class="probabilityStep"><b>約1 / 122</b><span>一発ツモが白ポッチ</span></div>
+      <div class="probabilityStep"><b>約1 / 72億</b><span class="keepPhrase">配牌で十三面待ち</span></div>
+      <div class="probabilityStep"><b>3 / 4</b><span class="keepPhrase">手牌の白がポッチではない</span></div>
+      <div class="probabilityStep"><b>約0.69</b><span class="keepPhrase">1巡目に和了牌を引かない</span></div>
+      <div class="probabilityStep"><b>約1 / 122</b><span class="keepPhrase">一発ツモが白ポッチ</span></div>
     </div>
     <div class="probabilityNote">※ 特定の牌構成・巡目・鳴きなし等の前提に基づく概算値。ルールや牌の扱いにより確率は変動します。</div>
   </section>
