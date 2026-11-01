@@ -41,6 +41,17 @@ body {
     overflow-wrap: normal;
 }
 
+p,
+li,
+dd,
+td {
+    text-wrap: pretty;
+}
+
+.word-keep {
+    white-space: nowrap;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -1274,7 +1285,8 @@ td {
 .service-card h3,
 .service-card .aligent-coming-soon-badge,
 .service-card .merupro-launch-badge,
-.service-cta {
+.direction-light-cta,
+.merupro-cta {
     word-break: keep-all;
 }
 
@@ -1290,6 +1302,7 @@ td {
     width: clamp(102px, 21%, 132px);
     height: auto;
     object-fit: contain;
+    margin-inline: auto;
 }
 
 @media (max-width: 600px) {
@@ -1307,40 +1320,110 @@ td {
     background: none;
 }
 
-.service-cta {
+.service-card .merupro-launch-badge {
+    color: #d98fa3;
+}
+
+.service-cta-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.direction-light-cta {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: min(100%, 240px);
+    height: 64px;
+    color: #f7fbff;
+    border-radius: 999px;
+    isolation: isolate;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.direction-light-cta__rim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.direction-light-cta__label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-indent: 0.12em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+}
+
+.direction-light-cta:hover,
+.direction-light-cta:focus-visible {
+    color: #fff;
+    filter: brightness(1.18) drop-shadow(0 0 10px rgba(143, 220, 255, 0.5));
+    transform: translateY(-2px);
+}
+
+.merupro-cta {
+    position: relative;
+    overflow: hidden;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.55em;
     min-height: 46px;
     padding: 11px 20px;
-    color: #fff;
-    background: linear-gradient(135deg, var(--primary-dark), var(--brand-gold));
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #77505c;
+    background: linear-gradient(135deg, #fff8fa 0%, #f9dce5 52%, #efb8c8 100%);
+    border: 1px solid rgba(217, 143, 163, 0.5);
     border-radius: 999px;
-    box-shadow: 0 8px 22px rgba(140, 124, 104, 0.24);
+    box-shadow: 0 9px 22px rgba(217, 143, 163, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.9);
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.04em;
     line-height: 1.4;
-    margin-top: 0;
     white-space: nowrap;
     transform: translateY(0);
 }
 
-.service-cta:hover,
-.service-cta:focus-visible {
-    color: #fff;
-    box-shadow: 0 12px 28px rgba(140, 124, 104, 0.34);
+.merupro-cta::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -45%;
+    width: 28%;
+    height: 160%;
+    background: rgba(255, 255, 255, 0.72);
+    filter: blur(5px);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+
+.merupro-cta:hover,
+.merupro-cta:focus-visible {
+    color: #69404d;
+    box-shadow: 0 13px 28px rgba(217, 143, 163, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.95);
     transform: translateY(-2px);
 }
 
-.service-cta span {
+.merupro-cta:hover::before,
+.merupro-cta:focus-visible::before {
+    left: 120%;
+}
+
+.merupro-cta__arrow {
     font-size: 1.05em;
     transition: transform 0.3s ease;
 }
 
-.service-cta:hover span,
-.service-cta:focus-visible span {
+.merupro-cta:hover .merupro-cta__arrow,
+.merupro-cta:focus-visible .merupro-cta__arrow {
     transform: translate(2px, -2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .merupro-cta::before { display: none; }
 }
