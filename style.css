@@ -1285,7 +1285,8 @@ td {
     .aligent-card-logo { width: clamp(96px, 30vw, 120px); }
 }
 
-.service-card .aligent-coming-soon-badge {
+.service-card .aligent-coming-soon-badge,
+.service-card .merupro-launch-badge {
     display: block;
     margin: 18px 0 18px;
     font-size: 13px;
@@ -1295,7 +1296,8 @@ td {
     background: none;
 }
 
-.aligent-service-link {
+.aligent-service-link,
+.merupro-service-link {
     color: var(--text);
     font-size: 0.9rem;
     font-weight: 700;
@@ -1306,6 +1308,8 @@ td {
 }
 
 .aligent-service-link:hover,
-.aligent-service-link:focus-visible {
+.aligent-service-link:focus-visible,
+.merupro-service-link:hover,
+.merupro-service-link:focus-visible {
     opacity: 0.7;
 }
