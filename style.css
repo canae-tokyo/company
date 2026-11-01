@@ -1285,16 +1285,17 @@ td {
 .service-card h3,
 .service-card .aligent-coming-soon-badge,
 .service-card .merupro-launch-badge,
-.direction-light-cta,
 .merupro-cta {
     word-break: keep-all;
 }
 
-.aligent-logo-link {
+.aligent-logo-wrap {
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
     margin: 20px auto 0;
+    text-align: center;
 }
 
 .aligent-card-logo {
@@ -1321,50 +1322,18 @@ td {
 }
 
 .service-card .merupro-launch-badge {
-    color: #d98fa3;
+    display: inline-block;
+    padding: 6px 13px;
+    color: #a85f74;
+    background: #f9dce5;
+    border: 1px solid #efc4d0;
+    border-radius: 999px;
 }
 
 .service-cta-wrap {
     display: flex;
     justify-content: center;
     width: 100%;
-}
-
-.direction-light-cta {
-    position: relative;
-    display: inline-grid;
-    place-items: center;
-    width: min(100%, 240px);
-    height: 64px;
-    color: #f7fbff;
-    border-radius: 999px;
-    isolation: isolate;
-    transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-.direction-light-cta__rim {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
-.direction-light-cta__label {
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-indent: 0.12em;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
-}
-
-.direction-light-cta:hover,
-.direction-light-cta:focus-visible {
-    color: #fff;
-    filter: brightness(1.18) drop-shadow(0 0 10px rgba(143, 220, 255, 0.5));
-    transform: translateY(-2px);
 }
 
 .merupro-cta {
@@ -1376,11 +1345,11 @@ td {
     gap: 0.55em;
     min-height: 46px;
     padding: 11px 20px;
-    color: #77505c;
-    background: linear-gradient(135deg, #fff8fa 0%, #f9dce5 52%, #efb8c8 100%);
-    border: 1px solid rgba(217, 143, 163, 0.5);
+    color: #fff;
+    background: linear-gradient(135deg, #e9a6b9 0%, #d97f9a 52%, #c86684 100%);
+    border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: 999px;
-    box-shadow: 0 9px 22px rgba(217, 143, 163, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    box-shadow: 0 9px 22px rgba(200, 102, 132, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.45);
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -1404,8 +1373,8 @@ td {
 
 .merupro-cta:hover,
 .merupro-cta:focus-visible {
-    color: #69404d;
-    box-shadow: 0 13px 28px rgba(217, 143, 163, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    color: #fff;
+    box-shadow: 0 13px 28px rgba(200, 102, 132, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.55);
     transform: translateY(-2px);
 }
 
