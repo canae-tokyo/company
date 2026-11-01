@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* ---------- ALIGENTロゴ：光源角度を回してリムを回転発光 ---------- */
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.rim-btn .rim-btn__light').forEach((light) => {
+            let deg = 135;
+            const tick = () => {
+                deg = (deg + 1) % 360;
+                light.setAttribute('azimuth', String(deg));
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        });
+    }
+
     /* ---------- ヘッダー：スクロールに応じて背景を出現 ---------- */
     const header = document.getElementById('header');
     const toggleHeaderState = () => {
