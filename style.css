@@ -3,12 +3,12 @@
     --primary: #b4a696;
     /* Warm Taupe */
     --primary-light: #f8f6f3;
-    --primary-dark: #8c7c68;
+    --primary-dark: #756653;
     /* Deep Mocha */
     --accent: #e9e2d8;
     /* Soft Champagne */
     --text: #3c3a37;
-    --text-light: #93897d;
+    --text-light: #70675c;
     --text-muted: #b7ad9f;
     --bg: #ffffff;
     --bg-alt: #f8f6f3;
@@ -243,7 +243,7 @@ img {
 }
 
 .btn-small {
-    background: var(--primary);
+    background: #756653;
     padding: 8px 25px !important;
     border-radius: 30px;
     color: white !important;
@@ -279,6 +279,7 @@ img {
     transform: scale(1.18);
     transition: transform 4s cubic-bezier(0.12, 0.82, 0.22, 1);
     background-image: url('hero.png');
+    background-image: image-set(url('assets/hero-lossless.webp') type('image/webp'), url('hero.png') type('image/png'));
     opacity: 0.85;
     animation: heroZoomOut 4s cubic-bezier(0.12, 0.82, 0.22, 1) forwards;
 }
@@ -969,7 +970,7 @@ td {
 }
 
 .btn {
-    background: var(--primary);
+    background: #756653;
     color: white;
     padding: 15px 50px;
     border-radius: 40px;
@@ -1006,7 +1007,7 @@ td {
     padding: 50px 0;
     text-align: center;
     font-size: 0.8rem;
-    color: var(--text-light);
+    color: #6b6257;
     border-top: 1px solid var(--border);
 }
 
@@ -1019,7 +1020,7 @@ td {
 }
 
 .footer-legal a {
-    color: var(--text-light);
+    color: #6b6257;
     border-bottom: 1px solid transparent;
 }
 
@@ -1110,7 +1111,7 @@ td {
 }
 
 /* Animations */
-.fade-up {
+.js .fade-up {
     opacity: 0;
     transform: translateY(32px);
     filter: blur(6px);
@@ -1119,7 +1120,7 @@ td {
         filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.fade-up.active {
+.js .fade-up.active {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
@@ -1135,7 +1136,7 @@ td {
         transition-duration: 0.01ms !important;
     }
 
-    .fade-up,
+    .js .fade-up,
     .hero-bg,
     .hero-overlay::after,
     .hero-content::before,
@@ -1357,12 +1358,12 @@ td {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.06em;
-    color: #2F86C9;
+    color: #24679b;
     background: none;
 }
 
 .service-card .merupro-launch-badge {
-    color: #d98fa3;
+    color: #985269;
 }
 
 .service-cta-wrap {
@@ -1431,3 +1432,28 @@ td {
 @media (prefers-reduced-motion: reduce) {
     .merupro-cta::before { display: none; }
 }
+
+/* メニューはJavaScriptが使える場合のみ折りたたむ。 */
+.nav-toggle { display: none; }
+@media (max-width: 768px) {
+    #header, #header.scrolled { height: 70px; min-height: 70px; }
+    .header-inner { flex-direction: row; align-items: center; padding-top: 0; padding-bottom: 0; }
+    html:not(.nav-ready) .header-inner { flex-direction: column; align-items: flex-start; }
+    html:not(.nav-ready) #header { position: relative; height: auto; }
+    html:not(.nav-ready) .nav { overflow: visible; }
+    html:not(.nav-ready) .nav ul { width: 100%; min-width: 0; flex-wrap: wrap; }
+    html:not(.nav-ready) .nav a { min-height: 44px; }
+    .nav-ready .nav-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); }
+    .nav-ready .nav { display: none; position: absolute; top: 70px; left: 0; width: 100%; max-height: calc(100dvh - 70px); overflow-y: auto; padding: 12px 5% 20px; background: #fff; box-shadow: 0 8px 18px rgba(0,0,0,.1); }
+    .nav-ready .nav.is-open { display: block; }
+    .nav-ready .nav ul { width: 100%; min-width: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+    .nav-ready .nav a { display: flex; min-height: 44px; padding: 8px; font-size: 1rem; }
+    .nav-ready .nav .btn-small { justify-content: center; margin-top: 8px; }
+    #hero { min-height: 580px; }
+    .hero-content { padding-bottom: 100px; padding-top: 70px; }
+    .scroll-down { bottom: 20px; }
+    .legal-document h1 { font-size: clamp(1.25rem, 6vw, 2rem); letter-spacing: 0; }
+    .footer-legal a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+:focus-visible { outline: 2px solid #725a37; outline-offset: 3px; }

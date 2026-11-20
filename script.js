@@ -1,5 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const menuButton = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('main-nav');
+    if (menuButton && menu) {
+        document.documentElement.classList.add('nav-ready');
+        const closeMenu = (restoreFocus = false) => {
+            menu.classList.remove('is-open');
+            menuButton.setAttribute('aria-expanded', 'false');
+            menuButton.setAttribute('aria-label', 'メニューを開く');
+            if (restoreFocus) menuButton.focus();
+        };
+        menuButton.addEventListener('click', () => {
+            if (menu.classList.contains('is-open')) return closeMenu();
+            menu.classList.add('is-open');
+            menuButton.setAttribute('aria-expanded', 'true');
+            menuButton.setAttribute('aria-label', 'メニューを閉じる');
+            menu.querySelector('a')?.focus();
+        });
+        menu.addEventListener('click', e => {
+            const link = e.target.closest('a');
+            if (!link) return;
+            closeMenu();
+            const hash = link.getAttribute('href');
+            if (hash && hash.startsWith('#') && hash.length > 1) {
+                const target = document.getElementById(hash.slice(1));
+                if (target) {
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
+                }
+            }
+        });
+        document.addEventListener('click', e => {
+            if (!menu.contains(e.target) && !menuButton.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu(true);
+        });
+        window.addEventListener('resize', () => { if (window.innerWidth > 768) closeMenu(); });
+    }
+
     /* ---------- ALIGENTロゴ：光源角度を回してリムを回転発光 ---------- */
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.querySelectorAll('.rim-btn .rim-btn__light').forEach((light) => {
@@ -16,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ---------- ヘッダー：スクロールに応じて背景を出現 ---------- */
     const header = document.getElementById('header');
     const toggleHeaderState = () => {
-        if (!header) return;
+        if (!header || !document.getElementById('hero')) return;
         if (window.scrollY > 40) {
             header.classList.add('scrolled');
         } else {
@@ -28,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ---------- ヒーロー背景のスムーズパララックス ---------- */
     const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) {
+    if (heroBg && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
             // ズームアウトと干渉しないよう、translate3dで滑らかに下方へシフト
@@ -69,6 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         revealTargets.forEach(el => el.classList.add('active'));
     }
 
+    clearTimeout(window.revealFallback);
+
     /* ---------- ナビゲーションの滑らかスクロール（イージング付き） ---------- */
     const getHeaderHeight = () => (header ? header.offsetHeight : 0);
     const easeInOutCubic = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
@@ -98,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!target) return;
             e.preventDefault();
             const targetY = target.getBoundingClientRect().top + window.pageYOffset - getHeaderHeight() + 1;
-            smoothScrollTo(targetY);
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) window.scrollTo(0, targetY);
+            else smoothScrollTo(targetY);
         });
     });
 

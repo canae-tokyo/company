@@ -2,6 +2,7 @@
 <html lang="ja">
 
 <head>
+    <script>document.documentElement.classList.add("js"); window.revealFallback = setTimeout(() => document.documentElement.classList.remove("js"), 8000);</script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZS7LKEKLG"></script>
     <script>
@@ -34,13 +35,14 @@
     <meta name="twitter:description" content="株式会社CANAEの会社概要ページです。">
     <meta name="twitter:image" content="https://canae.tokyo/assets/Ca_logo_g.png">
 
-    <link rel="stylesheet" href="../style.css?v=20261101e">
+    <link rel="stylesheet" href="../style.css?v=20261120">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&family=Noto+Sans+JP:wght@200;300;400;500&display=swap"
         rel="stylesheet">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 
 <body>
@@ -48,10 +50,11 @@
         <div class="container header-inner">
             <div class="logo">
                 <a href="/" aria-label="株式会社CANAE トップページへ">
-                    <img src="../assets/Ca_logo.png" alt="株式会社CANAE 新ロゴ" class="logo-img">
+                    <picture><source srcset="/assets/canae-logo-lossless.webp" type="image/webp"><img src="/assets/Ca_logo.png" alt="株式会社CANAE" class="logo-img" width="889" height="889"></picture>
                 </a>
             </div>
-            <nav class="nav" aria-label="メインナビゲーション">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+            <nav id="main-nav" class="nav" aria-label="メインナビゲーション">
                 <ul>
                     <li><a href="#about">Philosophy</a></li>
                     <li><a href="#services">Domains</a></li>
@@ -83,8 +86,8 @@
                     </span>
                 </h1>
                 <p class="fade-up" style="transition-delay: 0.4s;">株式会社CANAE</p>
-                <div class="scroll-down" style="transition-delay: 0.6s;">Scroll</div>
             </div>
+            <div class="scroll-down" aria-hidden="true">Scroll</div>
         </section>
 
         <section id="about" class="section" aria-labelledby="about-heading">
@@ -131,7 +134,7 @@
                         <div class="icon" aria-hidden="true">02</div>
                         <h3>パーソナルコーチング事業</h3>
                         <div class="aligent-logo-wrap">
-                            <a href="https://aligent.tokyo/" target="_blank" rel="noopener noreferrer" class="rim-btn" aria-label="ALIGENT 公式サイトへ（2026年11月 OPEN予定）">
+                            <a href="https://aligent.tokyo/" class="rim-btn" aria-label="ALIGENT 公式サイトへ（2026年12月 OPEN予定）">
                                 <svg class="rim-btn__svg" viewBox="0 0 320 120" aria-hidden="true">
                                     <defs>
                                         <filter id="aligentRimGlow" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="linearRGB">
@@ -150,7 +153,7 @@
                                 <span class="rim-btn__logo"><img src="../aligent-logo-web.png" alt="ALIGENT" class="aligent-card-logo" width="567" height="104"></span>
                             </a>
                         </div>
-                        <p class="aligent-coming-soon-badge">〜2026年11月 OPEN予定〜</p>
+                        <p class="aligent-coming-soon-badge">〜2026年12月 OPEN予定〜</p>
                         <p>個人の可能性を引き出し、人生設計、キャリア形成、目標達成および自己実現を総合的に支援するパーソナルコーチングサービス「ALIGENT」を提供します。</p>
                         <p>一人ひとりの価値観や課題に合わせた対話と行動支援を通じて、継続的な成長と目標実現を支援します。</p>
                         <p>今後は、法人向けの人材育成、組織開発およびリーダーシップ研修への展開を予定しています。
@@ -166,7 +169,7 @@
                     <article id="merupro-service" class="service-card fade-up" style="transition-delay: 0.3s;">
                         <div class="icon" aria-hidden="true">04</div>
                         <h3>アニマルウェルフェア・<wbr>動物関連事業</h3>
-                        <p class="service-cta-wrap"><a href="https://merupro.canae.tokyo/" target="_blank" rel="noopener noreferrer" class="merupro-cta"><span>めるぷろ概要ページ</span><span class="merupro-cta__arrow" aria-hidden="true">↗</span></a></p>
+                        <p class="service-cta-wrap"><a href="https://merupro.canae.tokyo/" class="merupro-cta"><span>めるぷろ概要ページ</span><span class="merupro-cta__arrow" aria-hidden="true">↗</span></a></p>
                         <p class="merupro-launch-badge">2026年11月1日（犬の日）始動</p>
                         <p>保護犬めるちゃんを起点とした「<span class="word-keep">めるちゃんプロジェクト</span>（めるぷろ）」を展開。</p>
                         <p>動物福祉とビジネスを両立させ、<span class="word-keep">商品・サービス</span>の収益を<span class="word-keep">保護動物カフェ</span>の開業や保護活動へつなげる、持続可能な支援モデルの構築を目指します。</p>
@@ -249,11 +252,11 @@
                             </tr>
                             <tr>
                                 <th scope="row">電話番号</th>
-                                <td>03-6161-1230</td>
+                                <td><a href="tel:0361611230">03-6161-1230</a></td>
                             </tr>
                             <tr>
                                 <th scope="row">メールアドレス</th>
-                                <td>hello@canae.tokyo</td>
+                                <td><!--email_off-->hello@canae.tokyo<!--/email_off--></td>
                             </tr>
                             <tr>
                                 <th scope="row">営業時間</th>
@@ -294,15 +297,15 @@
                 </div>
                 <div class="news-list fade-up">
                     <article class="news-item">
-                        <time datetime="2026-11-01">2026.11.1</time>
-                        <p><a href="https://merupro.canae.tokyo/" target="_blank" rel="noopener noreferrer">めるちゃんプロジェクトを始動しました</a></p>
+                        <time datetime="2026-11-01">2026.11.01</time>
+                        <p><a href="https://merupro.canae.tokyo/">めるちゃんプロジェクトを始動しました</a></p>
                     </article>
                     <article class="news-item">
                         <time datetime="2026-08-25">2026.08.25</time>
                         <p><a href="/news/2026/08/25/head-office-relocation/">本店所在地変更のお知らせ</a></p>
                     </article>
                     <article class="news-item">
-                        <time datetime="2026-08-11">2026.08</time>
+                        <time datetime="2026-08">2026.08</time>
                         <p><a href="https://webassist.canae.tokyo/">Web Assistサイトを更新し、新しいURLへ移転しました</a></p>
                     </article>
                     <article class="news-item">
@@ -323,10 +326,10 @@
                     <h2 id="contact-heading">お問い合わせ</h2>
                     <p>ビジネスのご相談やWebサイトについてのご相談は、下記よりお気軽にご連絡ください。</p>
                     <div class="contact-buttons" style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-                        <a href="mailto:hello@canae.tokyo" class="btn">お問い合わせ</a>
+                        <!--email_off--><a href="mailto:hello@canae.tokyo" class="btn">お問い合わせ</a><!--/email_off-->
                     </div>
                     <div class="contact-direct">
-                        <p>メール：hello@canae.tokyo</p>
+                        <p>メール：<!--email_off-->hello@canae.tokyo<!--/email_off--></p>
                         <p>営業時間：平日 9:00〜18:00</p>
                     </div>
                 </div>
@@ -403,7 +406,7 @@
       ]
     }
     </script>
-    <script src="../script.js"></script>
+    <script src="../script.js?v=20261120"></script>
 </body>
 
 </html>
